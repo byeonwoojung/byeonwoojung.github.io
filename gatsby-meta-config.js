@@ -13,7 +13,7 @@ module.exports = {
   author: {
     name: `변우중`,
     bio: {
-      role: `ML 사이언티스트`,
+      role: `ML 데이터 사이언티스트`,
       description: ['오늘도 달리는', '내일이 달라지는'],
       thumbnail: 'sample.png', // Path to the image in the 'asset' folder
     },
