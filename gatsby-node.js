@@ -29,10 +29,23 @@ const createPostsPages = ({ createPage, results }) => {
   const categorySet = new Set(['All']);
   const { edges } = results.data.allMarkdownRemark;
 
+  
   edges.forEach(({ node }) => {
     const postCategories = node.frontmatter.categories.split(' ');
     postCategories.forEach((category) => categorySet.add(category));
   });
+
+  // gatsby-node.js (수정할지 정하기)
+  // edges.forEach(({ node }) => {
+  //   const postCategories = node.frontmatter.categories;
+
+  //   if (Array.isArray(postCategories)) {  // 배열인지 확인
+  //     postCategories.forEach((category) => categorySet.add(category));
+  //   } else if (typeof postCategories === 'string') {  // 문자열일 경우
+  //     postCategories.split(' ').forEach((category) => categorySet.add(category));
+  //   }
+  // });
+
 
   const categories = [...categorySet];
 
