@@ -110,12 +110,12 @@
 <ul>
 <li><em>현재 바이러스가 있는 곳에서 상하좌우를 탐색하여 감염시키는 것을 1개의 턴이라고 했을 때,</em>
 <em>매 턴마다 몇 개의 감염이 늘어나는지 파악하여 <strong>3개가 늘어나는 턴에서 벽을 세우면 될까?</strong></em>
-=> 이전의 턴에서 벽으로 막을 수 있으면 막는 것이 더 낫기 때문에 <code class="language-text">&lt;u></code><strong>잘못된 접근</strong> <code class="language-text">&lt;/u></code>임</li>
+=> 이전의 턴에서 벽으로 막을 수 있으면 막는 것이 더 낫기 때문에 <strong>잘못된 접근</strong>임</li>
 <li>각각의 바이러스가 감염이 늘어나는 개수가 너무 무작위기 때문에 <strong>현재 턴에서 감염이 늘어나는 개수와</strong>
 <strong>이전 턴에서 감염이 늘어나는 개수들을 비교해서 벽을 막는 것은 너무 복잡함</strong></li>
 </ul>
 </li>
-<li>그러면 <code class="language-text">&lt;u></code><strong>벽을 세우는 모든 경우에서 가장 감염이 적게 되는 경우를 찾아서</strong> <code class="language-text">&lt;/u></code> 그 경우에서 빈 칸(0)의 개수를 출력하자.
+<li>그러면 <strong>벽을 세우는 모든 경우에서 가장 감염이 적게 되는 경우를 찾아서</strong> 그 경우에서 빈 칸(0)의 개수를 출력하자.
 => 계산복잡도가 높아질 수 있지만 가장 최선의 방법으로 보임</li>
 </ul>
 <p> </p>
@@ -270,9 +270,9 @@ empty_count <span class="token operator">=</span> <span class="token builtin">se
   
     <span class="token keyword">return</span> n_empty_count</code></pre></div>
 <ul>
-<li>인자로 받은 ”<code class="language-text">&lt;u></code>현재 <code class="language-text">&lt;/u></code>” 연구소 맵(nlab)과 2의 위치를 저장한 큐(nqueue)에 대해 코드가 진행된다.</li>
-<li><code class="language-text">&lt;u></code><strong>이미 벽을 세운 상태에서 바이러스 감염을 진행됐을 때 빈 칸이 얼마나 남을지를 보는 것</strong> <code class="language-text">&lt;/u></code>이다!!</li>
-<li>큐(nqueue)가 빌 때까지 while햐문 진행한다.
+<li>인자로 받은 ”<strong>현재</strong>” 연구소 맵(nlab)과 2의 위치를 저장한 큐(nqueue)에 대해 코드가 진행된다.</li>
+<li><strong>이미 벽을 세운 상태에서 바이러스 감염을 진행됐을 때 빈 칸이 얼마나 남을지를 보는 것</strong>이다!!</li>
+<li>큐(nqueue)가 빌 때까지 while문을 진행한다.
 <ul>
 <li>nqueue에서 바이러스 위치 하나를 뽑아온다.</li>
 <li>현재 뽑아온 바이러스 위치에서 dx와 dy를 이용해 상하좌우를 for문을 이용해 탐색한다.
@@ -287,6 +287,7 @@ empty_count <span class="token operator">=</span> <span class="token builtin">se
 => 그러면, wall() 함수에서 다음 3개의 벽의 조합에서 BFS를 또 진행할 것이다!!
 => 모든 조합에서 BFS 진행하면 wall() 함수에서 빈 칸(0) 개수의 최댓값을 반환할 것이다.</li>
 </ul>
+<p>끝. (어려웠다…)</p>
 <div class="table-of-contents">
 <ul>
 <li>
