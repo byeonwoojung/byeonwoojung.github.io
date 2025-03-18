@@ -20,6 +20,7 @@
     "gatsby-remark-autolink-headers": "^5.9.0",
     "gatsby-remark-copy-linked-files": "^5.9.0",
     "gatsby-remark-images": "^6.9.1",
+    "gatsby-remark-katex": "^6.9.0",
     "gatsby-remark-prismjs": "^6.9.0",
     "gatsby-remark-responsive-iframe": "^5.9.0",
     "gatsby-remark-smartypants": "^5.9.0",
@@ -28,6 +29,7 @@
     "gatsby-theme-material-ui": "^5.1.0",
     "gatsby-transformer-remark": "^5.9.1",
     "gatsby-transformer-sharp": "^4.12.1",
+    "katex": "^0.13.24",
     "prismjs": "^1.24.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -57,9 +59,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zoomkoding/zoomkoding-gatsby-blog"
+    "url": "https://github.com/byeonwoojung/byeonwoojung.github.io"
   },
   "bugs": {
-    "url": "https://github.com/zoomkoding/zoomkoding-gatsby-blog/issues"
+    "url": "https://github.com/byeonwoojung/byeonwoojung.github.io/issues"
   }
 }
