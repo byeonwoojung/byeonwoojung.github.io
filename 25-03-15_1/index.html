@@ -81,15 +81,15 @@
 (각 데이터셋은 2차원, 3차원, 그보다 높은 차원에 나타낼 수 있지만 2차원으로 나타낸다고 하자.)</p>
 <ul>
 <li>
-<p><strong>직선 하나로 서로 다른 점 2개를 두 그룹으로 분리할 수 있는가?</strong> => <strong>그렇다.</strong></p>
+<p><strong>직선 하나로 서로 다른 점 2개를 두 그룹으로 분리할 수 있는가?</strong> <strong>=></strong> <strong>그렇다.</strong></p>
 <p>조금 더 자세히 설명해보면,</p>
-<p>이진 분류에서 두 점이 같은 클래스를 갖는다(+, +).
-그러면 직선 |에 대해 ”<strong>+ + |</strong>“와 같이 클래스를 나눌 수 있다.
-이진 분류에서 두 점이 다른 클래스를 갖는다(+, -).
-그러면 직선 |에 대해 ” <strong>+ | -</strong>“와 같이 클래스를 나눌 수 있다.</p>
+<p>이진 분류에서 두 점이 같은 클래스를 갖는다(+, +).</p>
+<p>그러면 직선 |에 대해 ”<strong>+ + |</strong>“와 같이 클래스를 나눌 수 있다.</p>
+<p>이진 분류에서 두 점이 다른 클래스를 갖는다(+, -).</p>
+<p>그러면 직선 |에 대해 ” <strong>+ | -</strong>“와 같이 클래스를 나눌 수 있다.</p>
 </li>
 <li>
-<p><strong>직선 하나로 서로 다른 점 3개를 두 그룹으로 분리할 수 있는가?</strong> => <strong>그렇다.</strong></p>
+<p><strong>직선 하나로 서로 다른 점 3개를 두 그룹으로 분리할 수 있는가?</strong> <strong>=></strong> <strong>그렇다.</strong></p>
 <p>그림으로 좀 더 자세히 보자.</p>
 <p><span
       class="gatsby-resp-image-wrapper"
@@ -139,7 +139,7 @@
 <p><strong>XOR 문제</strong>를 알아보자.</p>
 <ul>
 <li>
-<p>논리 연산에서 배타적 논리합(Exclusive OR)은 <strong>두 값이 다를 때 참(True)이고</strong>, **같을 때 거짓(False)**로 클래스를 나눈다.</p>
+<p>논리 연산에서 배타적 논리합(Exclusive OR)은 <strong>두 값이 다를 때 참 (True)이고</strong>, <strong>같을 때 거짓</strong> **(False)**로 클래스를 나눈다.</p>
 </li>
 <li>
 <p>한 데이터의 특성 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">x_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>, <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>에 대해 데이터 포인트 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_1, x_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>를 나타낼 수 있는데, 배타적 논리합에 의해 <strong>점 (0, 1) , (1, 0)은 참(True, +)인 클래스</strong>, <strong>(0, 0), (1, 1)은 거짓(False, -) 클래스</strong>이다.</p>
@@ -209,7 +209,7 @@ c-2,6,-10,9,-24,9
 c-8,0,-12,-0.7,-12,-2z M1001 80
 h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.905em;"><span></span></span></span></span></span></span></span></span></span>: <strong>VC 신뢰도</strong></p>
 <ul>
-<li>**일반화 오차와 경험적 위험 사이의 오차 상한(일반화 오차의 상한)**이라고 생각하면 된다.
+<li><strong>일반화 오차와 경험적 위험 사이의 오차 상한</strong> **(일반화 오차의 상한)**이라고 생각하면 된다.
 즉, 모델이 학습 데이터뿐만 아니라 새로운 데이터에 대해 일반화할 때 추가로 발생할 수 있는 오차의 상한이다.</li>
 <li>모델의 복잡도(VC 차원 <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span></span>), 훈련 데이터의 수(<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span></span>), 신뢰 수준(<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi></mrow><annotation encoding="application/x-tex">\eta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">η</span></span></span></span></span>)에 따라 결정된다.</li>
 <li>모델의 복잡도(<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span></span>)가 커지면 일반화 오차의 상한이 커진다.</li>
