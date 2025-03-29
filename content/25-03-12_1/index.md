@@ -1,6 +1,6 @@
 ---
 emoji: 🏋🏻
-title: "[백준] 7576번 토마토 (Python 파이썬)"
+title: "[백준] 7576번 토마토 (Gold 5, Python 파이썬)"
 date: '2025-03-12 00:00:00'
 author: 변우중
 tags: 백준 7576 python 파이썬

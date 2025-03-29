@@ -1,6 +1,6 @@
 ---
 emoji: 🏋🏻
-title: "[백준] 14502번 연구소 (Python 파이썬)"
+title: "[백준] 14502번 연구소 (Gold 4, Python 파이썬)"
 date: '2025-03-11 00:00:00'
 author: 변우중
 tags: 백준 14502 python 파이썬
