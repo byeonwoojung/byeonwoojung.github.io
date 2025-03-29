@@ -21,6 +21,8 @@ categories: ASAC
 
 <img src="img_0.png" alt="img_0" style="zoom:70%;" />
 
+&nbsp;
+
 엉덩이 무겁게 공부하는 것에는 자신이 있었지만 조금 더 방향성을 잘 잡고, 효율적으로 공부하기 위해 SK 플래닛에서 진행하는 ASAC 과정에 지원하게 되었다.
 
 &nbsp;
@@ -31,7 +33,7 @@ categories: ASAC
 
 공부하는 것이 즐겁다. (미친 소리 같겠지만..)
 
-정확히는 무언가에 대해 공부할 때 대충하지 않는다.
+정확히는 무언가에 대해 공부할 때 깊이 파는 걸 선호한다. aka. 대충하지 않는다.
 
 간단한 예시를 들면 [Hands-on machine learning] (이하 생략)을 공부할 때 이해한 것을 모두 다 적느라 주석이 좀 많다..
 
@@ -175,17 +177,25 @@ queue.append([node, move_nodes[:i] + move_nodes[i+1:] + node_tree[node], num_she
 
 <img src="img_3.png" alt="img_3" style="zoom:50%;" />
 
+&nbsp;
+
 스터디 운영 경력(임용 고시 준비로 인해..)은 3년 이상이기에 스터디 방식을 짜고 의견 조율하는 것은 전혀 어렵지 않았다.
 
 스터디원들의 수준을 고려해 난이도별로 문제를 먼저 선정하여 자신이 생각하는 수준의 문제를 선택해 풀고, 스터디 시간에 자신이 고민한 흔적들, 좋은 코드와 라이브러리 등을 공유하기로 했다.
 
 나는 **공유의 힘**을 믿는다. 통신이 발달한 이래로 급격히 산업이 이렇게 발전한 것은 각자 알고 있는 지식을 공유하기 수월해졌기 때문이 아닌가. 또, 현재 다양한 오픈 소스들도 AI 발전을 위한 것이라 알고 있다. (TMI. 심지어 고등학교 교사 근무할 때 모둠학습을 많이 진행했다..)
 
-<img src="img_4.png" alt="img_4" style="zoom:50%;" />
+<img src="img_4.png" alt="img_4" style="zoom:30%;" />
 
-<img src="img_6.png" alt="img_6" style="zoom:50%;" />
+&nbsp;
 
-<img src="img_5.png" alt="img_5" style="zoom:50%;" />
+<img src="img_6.png" alt="img_6" style="zoom:30%;" />
+
+&nbsp;
+
+<img src="img_5.png" alt="img_5" style="zoom:45%;" />
+
+&nbsp;
 
 열심히 공유 중이다... 다함께 파이팅해서 나중에 하고 싶은 일을 하자고요💪🏻
 
