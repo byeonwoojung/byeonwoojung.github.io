@@ -1,229 +1,127 @@
 <h1 align="center">
-  Zoomkoding Gatsby Blog
+  Byeon Woojung's Dev Blog
 </h1>
 
 <p align="center">
-  <a href="https://github.com/zoomkoding/zoomkoding-gatsby-blog/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/license-0BSD-blue.svg" alt="Zoomkoding Gatsby Blog is released under the 0BSD license." />
+  <a href="https://github.com/byeonwoojung">
+    <img src="https://img.shields.io/badge/GitHub-byeonwoojung-181717?style=flat&logo=github" alt="GitHub Profile" />
   </a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
-  <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions welcome" />
+  <img src="https://img.shields.io/badge/Role-ML%2FAI%20Engineer-blue" alt="ML/AI Engineer" />
 </p>
 
-**Demo Websites**: [**English**](https://zoomkoding.netlify.app) | [**Korean**](https://www.zoomkoding.com)
+**Blog**: [byeonwoojung.github.io](https://byeonwoojung.github.io) | [**한국어 README**](./README.md)
 
 ## 👋 Introduction
 
-This is a blog theme created for developers who want to create a pretty, clean and search engine friendly development blog.🏅
+Hello! I'm Byeon Woojung, an ML/AI Engineer. 🚀
 
-> PRs and issues are all welcome! 👍
+This blog is a space where I document my learning journey and projects related to **Machine Learning, Natural Language Processing, and Data Analysis**.  
+I'm constantly growing with the mindset of "Running today, Changing tomorrow."
 
-## ✨ Features
+### 📧 Contact
+- **Email**: ricenuu.ds@gmail.com
+- **GitHub**: [@byeonwoojung](https://github.com/byeonwoojung)
 
-- 😛 Biography using Memoji and rotating-text
-- 💅 Code Highlight
-- 🌘 Dark MOde
-- 🔍 Table of Contents
-- 💬 Comments(Utterances)
-- ⚙️ Easy to configure
-- 🛠 Enhanced SEO & `sitemap.xml`, `robots.txt`
-- 📈 Google Analytics
-- 🧢 Emoji
+## 📝 Blog Content
 
-## 🚀 Quick start
+I write about the following topics:
 
-1.  **Create a Gatsby site.**
+- **Algorithm** 🧮: Solving coding test problems (Baekjoon, Programmers, etc.)
+- **NLP** 🗣️: Natural Language Processing theory and practice (Tokenization, Transformers, etc.)
+- **ML/AI** 🤖: Machine Learning projects and Deep Learning experiences
+- **Data Analysis** 📊: Data analysis and visualization techniques
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+## 🚀 Activities
 
-    ```shell
-    # create a new Gatsby site using the zoomkoding starter
-    gatsby new my-default-starter https://github.com/zoomkoding/zoomkoding-gatsby-blog
-    ```
+### Ongoing
+- **Mukbang YouTuber Restaurant Map Service** (2025.10 ~)
+  - AI-based YouTube content analysis automation
+  - Restaurant information extraction and map visualization
+  - **Tech**: Python, TypeScript
 
-1.  **Start developing.**
+### Completed Projects
+- **Dokja AI Foundation Model Project** (2025.09 ~ 2025.11)
+  - Agentic Tool Use data construction
+  - Flitto Inc. (Freelance)
 
-    Navigate into your new site’s directory and start it up.
+- **AI Summary Report for Franchise Entrepreneurs** (2025.07 ~ 2025.09)
+  - Integrated 5 data sources (franchise disclosure, real estate, business registry, etc.)
+  - RAG-based personalized brand recommendation system
+  - **Tech**: Python, RAG, PySpark, SQL, Langchain, OpenAI API
+  - [📹 Presentation](https://www.youtube.com/watch?v=aKPvZjedt4o) | [💻 GitHub](https://github.com/da-analysis/asac_8_dataanalysis)
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+- **YouTube Playlist View Prediction** (2025.04 ~ 2025.07)
+  - Multimodal data analysis (image, text, audio)
+  - View count prediction using ML modeling
+  - **Tech**: PyTorch, TensorFlow, Scikit-learn, Wav2Vec2, OpenCV
+  - [💻 GitHub](https://github.com/byeonwoojung/youtube-playlist-MLproject)
 
-1.  **Open the source code and start editing!**
+## 🛠 Tech Stack
 
-    Your site is now running at `http://localhost:8000`!
+### AI/ML
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/tutorial/part-five/#introducing-graphiql)._
+### NLP & LLM
+![Langchain](https://img.shields.io/badge/Langchain-121212?style=flat)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
 
-## ⚙️ Next Steps
+### Data Engineering
+![Apache Spark](https://img.shields.io/badge/Apache%20Spark-E25A1C?style=flat&logo=apachespark&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=mysql&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
 
-You can customize your blog by modifying contents of `gatsby-meta-config.js`
+### Development
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
 
-### 1. default
+## ⚙️ Getting Started
 
-Provide your blog's title, description, author, siteUrl, ogImage, social Information(`title` is used as the blog name in the upper left corner.)
+This blog is built with Gatsby.
 
-```js
-module.exports = {
-    title: '', // zoomkoding.dev
-    description: '', // zoomkoding's dev log
-    author: '', // zoomkoding
+### Installation & Running
 
-    siteUrl: '', // https://zoomkoding-gatsby-blog.netlify.com
-    ogImage: '', // open graph image (image displayed when the link is shared)
-    social: {
-        github: '', // https://github.com/zoomKoding
-        linkedIn: '', // https://www.linkedin.com/in/jinhyeok-jeong-800871192
-        email: '', // zoomkoding@gmail.com
-    },
-    ...
-}
-```
+\`\`\`bash
+# Clone the repository
+git clone https://github.com/byeonwoojung/byeonwoojung.github.io.git
+cd byeonwoojung.github.io
 
-### 2. bio
+# Install dependencies
+npm install
 
-**bio(Biography** is a section introducing the blog author.  
-For `description`, you can introduce yourself by adding multiple phrases. If you want to **add your Memoji**, replace the video file named `src/assets/author.mp4`.
+# Start development server
+npm start
+\`\`\`
 
-```js
-module.exports = {
-    ...
+Once the development server is running, you can view the blog at [http://localhost:8000](http://localhost:8000).
 
-    bio: {
-        language: 'en', // en, ko
-        name: '', // author name
-        description: [''], // phases to describe who you are
-    },
-    ...
-}
-```
+### Other Commands
 
-### 3. comments
+\`\`\`bash
+# Production build
+npm run build
 
-If you want to have comments for your blog postings, please provide your github repository which is connected to `utterances`.
+# Serve the built site locally
+npm run serve
 
-> 🦄 If you want to know how to set up utterances for your repository, read [https://utteranc.es/](https://utteranc.es/)
+# Clean cache
+gatsby clean
+\`\`\`
 
-```js
-module.exports = {
-    ...
+## 💡 Blog Features
 
-    comments: {
-        utterances: {
-            repo: '' // zoomkoding/zoomkoding-gatsby-blog
-        },
-    },
-    ...
-}
-```
+- 🔍 Post search functionality
+- 🌘 Dark mode support
+- 💅 Code highlighting
+- �� Auto-generated Table of Contents (ToC)
+- 📱 Responsive design
 
-## 👤 About Page
+## 📄 License
 
-You can also generate **About Page** with `gatsby-meta-config.js`. In the file, you can find timestamps and projects under about. If you provide information in the correct format, your About Page will be generated.
+This blog is based on the [Zoomkoding Gatsby Blog](https://github.com/zoomkoding/zoomkoding-gatsby-blog) theme.
 
-### 1. timestamps
-
-If you provide each timestamp information in an array as shown below, it will be displayed in the timestamps section according to the order you entered.
-
-> If there is no such information in links, you can omit it.
-
-```js
-module.exports = {
-    ...
-
-    about: {
-        timestamps: [
-            {
-                date: '', // date
-                activity: '', // activity
-                links: { // you can omit
-                    post: '', // post link
-                    googlePlay: '', // googlePlay link
-                    appStore: '' // appStore link
-                    github: '' // github repostory link
-                },
-            }
-            ...
-        ],
-        ...
-    },
-    ...
-}
-```
-
-### 2. projects
-
-Similarly, if you provide information for each project in an array, it will be displayed in the projects section in the order you entered.
-
-```js
-module.exports = {
-    ...
-
-    about: {
-        ...
-
-        projects: [
-            {
-                title: '', // project title,
-                description: '', // description
-                techStack: ['flutter', 'nodejs'], //  tech stack
-                thumbnailUrl: '', // thumbnail Url
-                links: { // you can omit
-                    post: '', // post link
-                    googlePlay: '', // googlePlay link
-                    appStore: '' // appStore link
-                    github: '' // github repostory link
-                },
-            },
-            ...
-        ],
-        ...
-    },
-    ...
-}
-```
-
-<br/>
-
-If you entered the contents without any problem, you can check that your own blog was born.🎉
-
-> Please re-run through `npm start` to check the changes in the running blog!
-
-## ✍️ How to write posts
-
-To write a blog post in earnest, create a directory under `/content` and write a posting using markdown in `index.md`.
-
-> The name of the folder is used to create the path.
-
-### ℹ️ Post's Metadata
-
-At the top of the index.md file, you need to provide emoji, title, date, author, tags, categories information as shown below.
-
-> Emoji will be shown at the top of the post, and the categories can be divided by spaces and multiple entries can be entered.
-
-```
 ---
-emoji: 🧢
-title: Getting Started
-date: '2021-03-22 23:00:00'
-author: 줌코딩
-tags: tutorial
-categories: tutorial
----
-```
 
-### 🖼 Image Path
-
-If you want to attach an image to a post, add an image file to the same directory and use it as follows.
-
-```
-![image](./[image.png])
-```
-
-### 🔍 Table of Contents
-
-If you want the table of contents to be displayed on the right side of the article, add the following contents to the bottom of the `index.md` file, and the table of contents will be created automatically.
-
-    ```toc
-    ```
+**Thank you for visiting!** Feel free to reach out if you have any questions. 😊

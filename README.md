@@ -1,229 +1,127 @@
 <h1 align="center">
-  Zoomkoding Gatsby Blog
+  변우중(Byeon Woojung)의 개발 블로그
 </h1>
 
 <p align="center">
-  <a href="https://github.com/zoomkoding/zoomkoding-gatsby-blog/blob/master/LICENSE">
-    <img src="https://img.shields.io/badge/license-0BSD-blue.svg" alt="Zoomkoding Gatsby Blog is released under the 0BSD license." />
+  <a href="https://github.com/byeonwoojung">
+    <img src="https://img.shields.io/badge/GitHub-byeonwoojung-181717?style=flat&logo=github" alt="GitHub Profile" />
   </a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
-  <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="contributions welcome" />
+  <img src="https://img.shields.io/badge/Role-ML%2FAI%20Engineer-blue" alt="ML/AI Engineer" />
 </p>
 
-**Demo Websites**: [**English**](https://zoomkoding.netlify.app) | [**Korean**](https://www.zoomkoding.com)
-
-[**English README.md**](https://github.com/zoomkoding/zoomkoding-gatsby-blog/blob/master/README.en.md)
+**블로그**: [byeonwoojung.github.io](https://byeonwoojung.github.io) | [**English README**](./README.en.md)
 
 ## 👋 소개
 
-블로그를 직접 운영하면서 조금씩 그려봤던 이상적인 개발 블로그 테마를 Gatsby를 통해 만들어보게 되었습니다.  
-이 테마가 블로그를 운영하고자 하시는 분들에게 자신의 이야기를 잘 담을 수 있는 공간이 되었으면 좋겠습니다.🙌
+안녕하세요! ML/AI 엔지니어 변우중입니다. 🚀
 
-블로그 테마가 맘에 드셨다면 아래 과정을 통해 자신의 블로그를 만들어보시길 바랍니다!
+이 블로그는 제가 학습하고 경험한 **머신러닝, 자연어 처리, 데이터 분석** 관련 지식과 프로젝트를 기록하는 공간입니다.  
+"오늘도 달리는, 내일이 달라지는" 마인드로 꾸준히 성장하고 있습니다.
 
-> 혹시 만드시는 과정에서 궁금하신 점이나 어려움이 있으시다면 [이슈](https://github.com/zoomKoding/zoomkoding-gatsby-blog/issues/new)를 통해 문의 남겨주세요!  
-> ⭐️는 블로그 운영에 큰 힘이 됩니다!😊
+### 📧 Contact
+- **Email**: ricenuu.ds@gmail.com
+- **GitHub**: [@byeonwoojung](https://github.com/byeonwoojung)
 
-<a href="https://star-history.com/#zoomkoding/zoomkoding-gatsby-blog&Date">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=zoomkoding/zoomkoding-gatsby-blog&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=zoomkoding/zoomkoding-gatsby-blog&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=zoomkoding/zoomkoding-gatsby-blog&type=Date" width="600px"/>
-  </picture>
-</a>
+## 📝 블로그 콘텐츠
 
-## ✨ 기능
+이 블로그에서는 다음과 같은 주제의 글을 작성하고 있습니다:
 
-- 😛 미모지와 문자 애니메이션를 통한 자기 소개
-- 🔍 포스팅 검색 지원
-- 🌘 다크모드 지원
-- 💅 코드 하이라이팅 지원
-- 👉 글 목차 자동 생성(ToC)
-- 💬 Utterances 댓글 기능 지원
-- ⚙️ meta-config를 통한 세부 설정 가능
-- 👨‍💻 About Page 내용 변경 가능
-- 📚 Posts Page 자동 생성
-- 🛠 sitemap.xml, robots.txt 자동 생성
-- 📈 Google Analytics 지원
-- 🧢 Emoji 지원
+- **Algorithm** 🧮: 백준, 프로그래머스 등 코딩 테스트 문제 풀이
+- **NLP** 🗣️: 자연어 처리 이론 학습 및 실습 (토큰화, 트랜스포머 등)
+- **ML/AI** 🤖: 머신러닝 프로젝트 및 딥러닝 경험 공유
+- **Data Analysis** 📊: 데이터 분석 및 시각화 기법
 
+## 🚀 주요 활동 (Activity)
 
+### 현재 진행 중
+- **먹방 유튜버 방문 음식점 지도 서비스** (2025.10 ~)
+  - AI 기반 유튜브 콘텐츠 분석 자동화
+  - 음식점 정보 추출 및 지도 시각화
+  - **Tech**: Python, TypeScript
 
+### 완료된 프로젝트
+- **독자 AI 파운데이션 모델 프로젝트** (2025.09 ~ 2025.11)
+  - Agentic Tool Use 데이터 가공 구축
+  - 주식회사 플리토(프리랜서)
 
+- **프랜차이즈 예비 창업자를 위한 AI 요약보고서 생성** (2025.07 ~ 2025.09)
+  - 5개 데이터 소스 통합 (정보공개서, 한국부동산원, 행정안전부 등)
+  - RAG 기반 맞춤형 브랜드 추천 시스템
+  - **Tech**: Python, RAG, PySpark, SQL, Langchain, OpenAI API
+  - [📹 발표 영상](https://www.youtube.com/watch?v=aKPvZjedt4o) | [💻 GitHub](https://github.com/da-analysis/asac_8_dataanalysis)
 
-## 🚀 시작하기
+- **섬네일·제목·오디오 기반 유튜브 플레이리스트 조회수 예측** (2025.04 ~ 2025.07)
+  - 멀티모달 데이터(이미지, 텍스트, 오디오) 통합 분석
+  - ML 모델링을 통한 조회수 예측
+  - **Tech**: PyTorch, TensorFlow, Scikit-learn, Wav2Vec2, OpenCV
+  - [💻 GitHub](https://github.com/byeonwoojung/youtube-playlist-MLproject)
 
-Github Page나 Netlify 중 원하시는 배포 환경에 따라 다음 과정을 진행하시면 빠르게 블로그를 만드실 수 있습니다.
+## 🛠 기술 스택
 
-### 🦖 GitHub Page로 만들기
+### AI/ML
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
 
-깃헙 페이지를 통해 블로그를 만드시다면 아래 글을 참고해주세요!  
-[Gatsby 테마로 GitHub Blog 만들기](https://www.zoomkoding.com/gatsby-github-blog/)
+### NLP & LLM
+![Langchain](https://img.shields.io/badge/Langchain-121212?style=flat)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
 
-### 🔧 Netlify로 만들기
+### Data Engineering
+![Apache Spark](https://img.shields.io/badge/Apache%20Spark-E25A1C?style=flat&logo=apachespark&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=mysql&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
 
-아래 버튼을 활용하면 개인 계정에 `zoomkoding-gatsby-blog`를 사용하고 있는 Repository 생성과 Netlify에 배포를 동시에 진행할 수 있습니다. 이후에, 생성된 Repository를 clone합니다.
+### Development
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/zoomkoding/zoomkoding-gatsby-blog)
+## ⚙️ 블로그 실행 방법
 
-### 🏃‍♀️ 실행하기
+이 블로그는 Gatsby 기반으로 제작되었습니다.
 
-아래 명령어를 실행하여 로컬 환경에 블로그를 실행합니다.
+### 설치 및 실행
 
 ```bash
-# Install dependencies
-$ npm install
+# 저장소 클론
+git clone https://github.com/byeonwoojung/byeonwoojung.github.io.git
+cd byeonwoojung.github.io
 
-# Start development server
-$ npm start
+# 의존성 설치
+npm install
+
+# 개발 서버 실행
+npm start
 ```
 
-<br/>
+개발 서버가 실행되면 [http://localhost:8000](http://localhost:8000)에서 블로그를 확인할 수 있습니다.
 
-위 명령어가 문제 없이 실행됐다면 [http://localhost:8000](http://localhost:8000)에서 블로그를 확인하실 수 있습니다.
+### 기타 명령어
 
-## ⚙️ 블로그 정보 입력하기
+```bash
+# 프로덕션 빌드
+npm run build
 
-위의 과정을 다 진행하셨다면 배포와 개발 환경이 세팅이 끝났습니다! 🙌  
-이제 블로그 정보를 입력하게 되면 나만의 블로그가 만들어지게 됩니다. 이를 위해 `gatsby-meta-config.js`에 있는 여러값들을 변경해줍니다.
+# 빌드된 사이트 로컬에서 실행
+npm run serve
 
-### 1. 블로그 기본 정보
-
-```js
-title: '' // zoomkoding.com
-description: '' // 줌코딩의 개발일기
-language: 'ko', // 'ko', 'en' (영어 버전도 지원하고 있습니다.)
-siteUrl: '' // https://www.zoomkoding.com
-ogImage: '/og-image.png', // 공유할 때 보이는 미리보기 이미지로 '/static' 하위에 넣고 싶은 이미지를 추가하시면 됩니다.
+# 캐시 정리
+gatsby clean
 ```
 
-### 2. 댓글 설정
+## 💡 블로그 특징
 
-블로그 글들에 댓글을 달 수 있길 원하신다면 utterances를 통해서 이를 설정하실 수 있습니다.
+- 🔍 포스팅 검색 기능
+- 🌘 다크모드 지원
+- 💅 코드 하이라이팅
+- 📑 글 목차 자동 생성 (ToC)
+- 📱 반응형 디자인
 
-> 🦄 utterances 사용방법은 [링크](https://utteranc.es/)를 참고해주세요!
+## 📄 라이선스
 
-```js
-comments: {
-    utterances: {
-        repo: '' // zoomkoding/zoomkoding-gatsby-blog
-    },
-}
+이 블로그는 [Zoomkoding Gatsby Blog](https://github.com/zoomkoding/zoomkoding-gatsby-blog) 테마를 기반으로 제작되었습니다.
 
-```
-
-### 3. 글쓴이 정보
-
-글쓴이(author)에 입력하신 정보는 홈페이지와 about 페이지 상단에 있는 글쓴이를 소개하는 섹션인 bio에서 사용됩니다. **description**에 자신을 설명하는 문구들을 넣으면 애니메이션으로 보여지게 됩니다. bio에 들어가는 이미지를 바꾸시려면 `assets`에 원하시는 파일을 추가하시고 파일의 이름을 **thumbnail**에 넣어주시면 됩니다.(gif도 지원합니다!)
-
-아이폰 미모티콘으로 thumbnail을 만드는 방법이 궁금하시면 [이 글](https://www.zoomkoding.com/memoji-to-gif/)을 참고해주세요!
-
-> 🤖 위에서 설정한 언어에 따라 description의 포맷이 달라집니다.
-
-```js
-author: {
-    name: '정진혁',
-    bio: {
-      role: '개발자',
-      description: ['사람에 가치를 두는', '능동적으로 일하는', '이로운 것을 만드는'],
-      thumbnail: `zoomkoding.gif`,
-    },
-    social: {
-      github: 'https://github.com/zoomKoding',
-      linkedIn: 'https://www.linkedin.com/in/jinhyeok-jeong-800871192',
-      email: 'zoomkoding@gmail.com',
-    },
-},
-```
-
-## 🙋‍♀️ about page 만들기
-
-about 페이지 또한 gatsby-meta-config.js를 통해 생성됩니다. about 하위에 있는 timestamps와 projects에 각각 정보를 입력하시면 about 페이지가 자동 생성됩니다.
-
-### 1. timestamps
-
-아래와 같이 각 timestamp 정보를 배열로 제공해주시면 입력하신 순서에 맞춰서 timestamps section에 보여지게 됩니다.
-
-> links에 해당 정보가 없다면 생략해도 됩니다.
-
-```js
-{
-  date: '2021.02 ~',
-  activity: '개인 블로그 개발 및 운영',
-  links: {
-    post: '/gatsby-starter-zoomkoding-introduction',
-    github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-    demo: 'https://www.zoomkoding.com',
-  },
-},
-```
-
-### 2. projects
-
-마찬가지로 각 project 정보를 배열로 제공해주시면 입력하신 순서에 맞춰서 projects section에 보여지게 됩니다.
-
-```js
-{
-  title: '개발 블로그 테마 개발',
-  description:
-    '개발 블로그를 운영하는 기간이 조금씩 늘어나고 점점 많은 생각과 경험이 블로그에 쌓아가면서 제 이야기를 담고 있는 블로그를 직접 만들어보고 싶게 되었습니다. 그동안 여러 개발 블로그를 보면서 좋았던 부분과 불편했던 부분들을 바탕으로 레퍼런스를 참고하여 직접 블로그 테마를 만들게 되었습니다.',
-  techStack: ['gatsby', 'react'],
-  thumbnailUrl: 'blog.png',
-  links: {
-    post: '/gatsby-starter-zoomkoding-introduction',
-    github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-    demo: 'https://www.zoomkoding.com',
-  }
-}
-```
-
-<br/>
-
-그렇게 내용을 문제 없이 입력하셨다면 나만의 블로그가 탄생한 것을 확인하실 수 있습니다.🎉
-
-> 변동사항을 실행 중인 블로그에서 확인하시려면 `npm start`를 통해 재실행해주세요!
-
-## ✍️ 글 쓰기
-
-본격적으로 블로그에 글을 쓰려면 `/content` 아래에 디렉토리를 생성하고 `index.md`에 markdown으로 작성하시면 됩니다.
-
-> 이 때, 폴더의 이름은 경로를 생성하는데 됩니다.
-
-### 🏗 메타 정보
-
-index.md 파일의 상단에는 아래와 같이 emoji, title, date, author, tags, categories 정보를 제공해야 합니다.
-
-> emoji는 글머리에 보여지게 되며, categories는 띄어쓰기로 나누어 여러개를 입력할 수 있습니다.
-
-```
 ---
-emoji: 🧢
-title: Getting Started
-date: '2021-03-22 23:00:00'
-author: 줌코딩
-tags: tutorial
-categories: tutorial
----
-```
 
-### 🖼 이미지 경로
-
-글에 이미지를 첨부하고 싶으시다면 같은 디렉토리에 이미지 파일을 추가하셔서 아래와 같이 사용하시면 됩니다.
-
-```
-![사진](./[이미지 파일명])
-```
-
-### 🔍 목차 생성
-
-글의 우측에 목차가 보이기를 원하신다면 `index.md` 파일 맨 아래에 다음 내용을 추가하시면 자동으로 목차가 생성됩니다.
-
-    ```toc
-    ```
-
-### 💡 버그 리포트 & 문의
-
-궁금하신 점이 있으시다면 [이슈](https://github.com/zoomKoding/zoomkoding-gatsby-blog/issues/new)로 남겨주시면 최대한 빠르게 답변 드리도록 하겠습니다!🙋‍♂️
-
-> 🤔 혹시 특정 기능이 없어서 테마 사용을 망설이시거나 제안하고 싶으신 기능이 있으시다면,  
-> 👉 [여기](https://github.com/zoomKoding/zoomkoding-gatsby-blog/issues/40)에 댓글 남겨주세요! 적극적으로 반영하겠습니다 :)
+**방문해주셔서 감사합니다!** 궁금한 점이 있으시면 언제든지 연락주세요. 😊
