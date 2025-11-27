@@ -6,7 +6,7 @@ module.exports = {
   ogImage: `/og-image.jpg`, // Path to your in the 'static' folder
   comments: {
     utterances: {
-      repo: ``, // `zoomkoding/zoomkoding-gatsby-blog`,
+      repo: `https://github.com/byeonwoojung/byeonwoojung.github.io`, // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
   ga: '0', // Google Analytics Tracking ID
@@ -104,7 +104,7 @@ module.exports = {
         description:
           '먹방 유튜버의 콘텐츠를 AI 기반 분석 및 분석 데이터 평가를 자동화하여, 방문 음식점명·위치·유튜버의 음식 리뷰 등의 정보를 지도에 나타냄으로써 사용자들에게 먹방 유튜버가 방문한 음식점 정보를 제공합니다. 사용자가 유튜버에게 직접 음식점 제안하는 기능을 통해 해당 유튜버에게 콘텐츠 아이디어에 관한 분석 데이터 제공을 목표로 합니다.',
         techStack: ['Python', 'Typescript'],
-        thumbnailUrl: 'tzydong-home.png',
+        thumbnailUrl: 'tzudong-home.png',
         links: {
           post: 'https://byeonwoojung.github.io/about',
           // github: 'https://github.com/byeonwoojung',
@@ -128,7 +128,7 @@ module.exports = {
       //   description:
       //     '',
       //   techStack: [''],
-      //   thumbnailUrl: 'tzydong-home.png',
+      //   thumbnailUrl: 'tzudong-home.png',
       //   links: {
       //     // post: 'https://byeonwoojung.github.io/about',
       //     // github: 'https://github.com/byeonwoojung',
