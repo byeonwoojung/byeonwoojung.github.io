@@ -1,16 +1,16 @@
 ---
 emoji: 📝
-title: "[ASAC회고] 한국디지털콘텐츠학회 논문 발표 후기 (2025.07.03)"
+title: "[ASAC 회고] 한국디지털콘텐츠학회 논문 발표 후기 (2025.07.03)"
 date: '2025-07-04 00:00:00'
 author: 변우중
 tags: 한국디지털콘텐츠학회 학회발표 논문발표 ASAC
-categories: 회고 학회논문발표 ML모델링 유튜브 플레이리스트 youtube
+categories: ASAC
 ---
 GitHub Repository: https://github.com/byeonwoojung/youtube-playlist-MLproject
 
 &nbsp;
 
-## 들어가며
+## 들어가며(?)
 
 ---
 
@@ -142,7 +142,7 @@ ASAC 교육과정에서 딥러닝 프로젝트, 기업연계 프로젝트을 함
 
 &nbsp;
 
-## 마치며
+## 마무리이이
 
 ---
 
