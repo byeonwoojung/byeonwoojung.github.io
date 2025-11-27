@@ -20,7 +20,7 @@ GitHub 레포: https://github.com/byeonwoojung/youtube-playlist-MLproject
 
 정말 발표 때가 오니, 약간 긴장도 되고 설레기도 했다.(사실 긴장 안함🥶)
 
-<img src="학회논문발표_1.png" alt="학회논문발표_1" style="zoom:50%;" />
+<img src="conference_1.png" alt="conference_1" style="zoom:50%;" />
 
 진짜 마감 직전까지 수정한...ㅠ 학회 논문은 내겐 아픈 손가락이다.. 더 잘할 수 있었을 텐데 아쉬움이 많이 남는다..
 (다른 분들은 원치 않으실 수 있으니 가렸음다,,ㅎ)
@@ -53,7 +53,7 @@ GitHub 레포: https://github.com/byeonwoojung/youtube-playlist-MLproject
 
 섬네일에서는 감성·일상 테마 정합도, 정면얼굴, 색상 분포, 텍스트 면적 비율, 주요소(동물, 사람, 애니메이션 등), 명암 분산도 등을 추출했고, 제목에서는 오디오에서는 정량적 특징(centroid, bpm 등)과 감성적인 특징(7가지 을 분석했다. 오디오는 음향 특징을 뽑아서 모델에 넣었다.
 
-<img src="논문발표자료_1.png" alt="논문발표자료_1" style="zoom:50%;" />
+<img src="presentation_1.png" alt="presentation_1" style="zoom:50%;" />
 
 &nbsp;
 
@@ -69,7 +69,7 @@ GitHub 레포: https://github.com/byeonwoojung/youtube-playlist-MLproject
 
 발표 자료를 만들면서 프로젝트를 다시 정리하는 시간을 가질 수 있었다. 뭐가 중요한지, 뭘 강조해야 하는지 명확해졌다.
 
-<img src="논문발표자료_2.png" alt="논문발표자료_2" style="zoom:50%;" />
+<img src="presentation_2.png" alt="presentation_2" style="zoom:50%;" />
 
 ### 발표 연습
 
@@ -86,9 +86,9 @@ GitHub 레포: https://github.com/byeonwoojung/youtube-playlist-MLproject
 
 ---
 
-<img src="학회논문발표_2.png" alt="학회논문발표_2" style="zoom:50%;" />
+<img src="conference_2.png" alt="conference_2" style="zoom:50%;" />
 
-<img src="학회논문발표_3.png" alt="학회논문발표_3" style="zoom:50%;" />
+<img src="conference_3.png" alt="conference_3" style="zoom:50%;" />
 
 ASAC 교육과정에서 딥러닝 프로젝트와 기업연계 프로젝트를 함께 준비하느라,
 도저히 제주도를 갈 수 없어서 비대면으로 했습니다^^(너무 아쉬운.........)
