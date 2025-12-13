@@ -93,7 +93,7 @@ chain <span class="token operator">=</span> prompt <span class="token operator">
 
 chain<span class="token punctuation">.</span>batch<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">"topic"</span><span class="token punctuation">:</span> <span class="token string">"ChatGPT"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"topic"</span><span class="token punctuation">:</span> <span class="token string">"Instagram"</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment"># 출력: ['ChatGPT는 자연어 처리 기술을 사용하여 사람과의 대화를 시뮬레이션하는 인공지능 챗봇이다. 최신의 딥러닝 모델을 바탕으로 학습하며 사용자의 질문에 대답하고 다양한 주제에 대한 정보를 제공한다. 사용자와 자연스럽게 상호작용하면서 학습과 업데이트를 거쳐 보다 정확하고 유용한 응답을 제공한다.', 'Instagram은 사진과 동영상을 공유하고 다른 사용자들과 소통할 수 있는 소셜 미디어 플랫폼이다. 인스타그램은 휴대폰 앱을 통해 이용되며, 다양한 필터와 효과를 통해 사진을 가공하고 세련된 프로필을 만들 수 있다. 또한 해시태그를 통해 다양한 주제와 관심사에 맞는 콘텐츠를 검색하고 소통할 수 있다.']</span></code></pre></div>
-<p>리스트에 input_variables의 값들을 갖는 딕셔너리를 모아서 각각 배치로 chain에 던진다.
+<p>리스트에 input_variables의 값들을 갖는 딕셔너리를 모아서 각각 배치로 chain에 던진다.<br>
 <strong>model을 거치고 파싱을 거치면서 각 배치 결과의 content들을 리스트에 묶어서 저장된다.</strong></p>
 <p>참고로 config 딕셔너리에서 max_concurrency 키의 값을 설정하여 동시 처리할 수 있는 최대 작업 수를 정해줄 수 있다. 즉, 한번에 배치를 여러 개 처리를 할 수 있고 결과는 똑같이 모든 배치를 묶어서 정리되어 있다.</p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">chain<span class="token punctuation">.</span>batch<span class="token punctuation">(</span>
@@ -133,8 +133,7 @@ my_abatch_process <span class="token operator">=</span> chain<span class="token 
  '인스타그램은 사진과 동영상을 공유할 수 있는 소셜미디어 플랫폼이다. 사용자들은 팔로워들과 소통하며 일상 속의 순간들을 공유할 수 있다. 또한 해시태그를 통해 관심사나 주제에 맞는 콘텐츠를 찾을 수도 있다.',
  'Facebook은 소셜 네트워크 서비스로, 사용자들이 글을 게시하고 사진이나 동영상을 공유할 수 있는 플랫폼입니다. 전 세계적으로 많은 사람들이 가입해 사용하며, 친구들이나 가족과 소통하고 소셜 미디어를 통해 정보를 공유합니다. 또한 광고도 활발히 진행되어 상품이나 서비스를 홍보하는데 이용됩니다.']
 """</span></code></pre></div>
-<p><strong>비동기적으로 각 배치를 기다리지 않고 동시 작업을 수행하며, 프로세스 완료 후 리스트로 출력한다.</strong>
-이때, 결과는 뱉어 내고 어디에 저장이 되지 않습니다!!</p>
+<p><strong>비동기적으로 각 배치를 기다리지 않고 동시 작업을 수행하며, 프로세스 완료 후 리스트로 출력한다.</strong><br>이때, 결과는 뱉어 내고 어디에 저장이 되지 않습니다!!</p>
 <blockquote>
 <h3 id="깨알-tip" style="position:relative;"><a href="#%EA%B9%A8%EC%95%8C-tip" aria-label="깨알 tip permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>💡깨알 Tip</h3>
 <p>그래서!! ‘변수 = await 비동기 배치 체인 객체’로 결과를 받아 놓을 수 있습니다!</p>
@@ -153,12 +152,13 @@ result</code></pre></div>
 <p>이러한 Runnable들을 순차 또는 병렬로 연결해 하나의 실행 흐름으로 구성한 것을 <strong>Chain</strong>이라고 합니다.</p>
 <p> </p>
 <h3 id="runnable-프로토콜" style="position:relative;"><a href="#runnable-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C" aria-label="runnable 프로토콜 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Runnable 프로토콜</h3>
-<p><strong>Runnable 프로토콜</strong>은
+<p><strong>Runnable 프로토콜</strong>은<br>
 LangChain에서 **모든 실행 가능한 구성요소가 따라야 하는 공통 실행 규약(interface)**입니다.</p>
 <blockquote>
 <p>즉,
 <strong>“입력을 받아 실행하고, 출력을 반환하는 방법을 표준화한 약속”</strong></p>
 </blockquote>
+<p> </p>
 <p>LangChain에 서로 성격이 완전히 다른 구성요소들이</p>
 <ol>
 <li>실행 방식이 통일되어야 하고</li>
@@ -206,6 +206,7 @@ LangChain에서 **모든 실행 가능한 구성요소가 따라야 하는 공�
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">retriever<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token string">"2+3"</span><span class="token punctuation">)</span></code></pre></div>
 <p>전부 <code class="language-text">invoke()</code>로 실행 가능하다는 말입니다.</p>
 <p>참고로 Chain도 그 자체가 Runnable이라 동일한 실행 인터페이스로 호출 가능합니다. (쉿🤫 Chain이라는 Runnable을 병렬로 연결 가능한데, 그것도 가능함~)</p>
+<p> </p>
 <p>결국, Runnable의 핵심 철학은</p>
 <blockquote>
 <p>“무엇을 하는가”가 아니라
@@ -222,7 +223,35 @@ LangChain에서 **모든 실행 가능한 구성요소가 따라야 하는 공�
 <li>다음 Runnable이 <strong>기대하는 입력 형태</strong></li>
 </ul>
 <p>를 맞춰야 하고, 이를 위해 <strong>데이터를 전달·변형하는 여러 방법</strong>이 존재합니다.</p>
-<h4 id="1-chain-병렬-연결-runnableparallel" style="position:relative;"><a href="#1-chain-%EB%B3%91%EB%A0%AC-%EC%97%B0%EA%B2%B0-runnableparallel" aria-label="1 chain 병렬 연결 runnableparallel permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Chain 병렬 연결: RunnableParallel</h4>
+<p> </p>
+<h4 id="1-값-전달-runnablepassthrough" style="position:relative;"><a href="#1-%EA%B0%92-%EC%A0%84%EB%8B%AC-runnablepassthrough" aria-label="1 값 전달 runnablepassthrough permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 값 전달: RunnablePassthrough</h4>
+<p>RunnablePassthrough는 값을 그대로 전달해주는 친구입니다.</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>runnables <span class="token keyword">import</span> RunnablePassthrough
+
+RunnablePassthrough<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"num"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment"># 출력: {"num": 10}</span></code></pre></div>
+<p>이렇게 RunnablePassthrough()에서 invoke 메서드 호출하면 입력값 그대로 출력됩니다.<br>일반적으로 invoke() 통해 Runnable 실행할 때는 사용자 입력은 <strong>딕셔너리 형태</strong>로 전달하잖아요?</p>
+<p><strong>사용자 입력을 딕셔너리가 아닌 ‘입력 변수의 값’만 받고, RunnablePassthrough를 통해서 chain 내부에서 입력(딕셔너리 형태) 키의 값으로 곧바로 넣어줄 수가 있습니다.</strong></p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># chain에 딕셔너리 {입력 변수명: RunnablePassthrough()}를 넣고 연결해줌</span>
+runnable_chain <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"num"</span><span class="token punctuation">:</span> RunnablePassthrough<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">|</span> prompt <span class="token operator">|</span> ChatOpenAI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 사용자 입력은 입력 변수의 '값'만 받음</span>
+runnable_chain<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span></code></pre></div>
+<p><strong>그럼 이것의 장점이 뭐냐?</strong><br><strong>=> 체인 설계할 때  딕셔너리 형태로 변수를 미리 다 넣어 두고, 입력 변수 넣고 호출할 때는 변수명 기억 못해도 값만 넣을 수 있음!!</strong></p>
+<blockquote>
+<h3 id="깨알-tip-1" style="position:relative;"><a href="#%EA%B9%A8%EC%95%8C-tip-1" aria-label="깨알 tip 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>💡깨알 Tip</h3>
+<p><strong>RunnablePassthrough.assign</strong>()을 이용해서 RunnablePassthrough의 <strong>입력 key/valu</strong>e와 <strong>새롭게 할당할 key/value를 통합할 수 있다.</strong><br>
+=> <strong>RunnablePassthrough.assign(새롭게 할당할 key이름=Runnable/lambda 함수).invoke({입력 key: value})을 이용하면 된다.</strong></p>
+<p><strong>즉, 입력은 그대로 가져오면서 assign을 통해 새로운 key/value도 가져와 출력한다.</strong></p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># "RunnablePassthrough.assign(new_num=lambda x: x["num"] * 3)"에 입력 {"num": 1}을 넣음</span>
+<span class="token comment"># 입력 {"num": 1} 자체가 x로 들어감 (x={"num": 1})</span>
+<span class="token comment"># x["num"] * 3 결과를 new_num 키의 값에 넣어 새로운 key/value 만듦</span>
+<span class="token comment"># 입력은 그대로 가져오면서 assign을 통해 새로운 key/value도 가져와 출력한다.</span>
+<span class="token punctuation">(</span>RunnablePassthrough<span class="token punctuation">.</span>assign<span class="token punctuation">(</span>new_num<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token string">"num"</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"num"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment"># 출력: {'num': 1, 'new_num': 3}</span></code></pre></div>
+</blockquote>
+<p> </p>
+<h3 id="2-runnable-병렬-연결-runnableparallel" style="position:relative;"><a href="#2-runnable-%EB%B3%91%EB%A0%AC-%EC%97%B0%EA%B2%B0-runnableparallel" aria-label="2 runnable 병렬 연결 runnableparallel permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Runnable 병렬 연결: RunnableParallel</h3>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>runnables <span class="token keyword">import</span> RunnableParallel
 <span class="token keyword">from</span> langchain_openai <span class="token keyword">import</span> ChatOpenAI
 <span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>prompts <span class="token keyword">import</span> PromptTemplate
@@ -248,45 +277,45 @@ chain2 <span class="token operator">=</span> <span class="token punctuation">(</
 combined <span class="token operator">=</span> RunnableParallel<span class="token punctuation">(</span>capital<span class="token operator">=</span>chain1<span class="token punctuation">,</span> area<span class="token operator">=</span>chain2<span class="token punctuation">)</span>
 combined<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"country"</span><span class="token punctuation">:</span> <span class="token string">"대한민국"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token comment"># 출력: {'capital': '대한민국의 수도는 서울이에요.', 'area': '대한민국의 총 면적은 약 100,363km² 입니다.'}</span></code></pre></div>
-<p>각 chain 객체를 생성하고 <strong>RunnableParallel를 이용해 chain들을 동시에 실행하는 병렬 실행 체인을 생성할 수 있습니다.</strong>
-그리고, <strong>RunnableParallel 안에 capital과 area는 각 체인의 응답 결과를 받는 변수명입니다.</strong> (이렇게 체인 간 데이터 전달도 가능한 거제~)</p>
-<p>결과를 보면, 각 체인을 병렬로 실행해서 응답 결과를 capital과 area의 키의 값으로 넣어 딕셔너리를 반환하고 있습니다.</p>
+<p>각 chain 객체를 생성한 후,<br><strong>RunnableParallel를 이용해 chain들을 동시에 실행하는 병렬 실행 체인을 생성할 수 있습니다.</strong> (정확히 말하면 Runnable인 chain 객체를 병렬 연결 가능합니다.)</p>
+<p>그리고,<br><strong>RunnableParallel 안에 capital과 area는 각 체인의 응답 결과를 받는 변수명입니다.</strong> <strong>그 capital과 area을 키로 갖는 딕셔너리 형태로 최종 결과를 내어 줍니다.</strong> (이렇게 체인 간 데이터 전달도 가능한 겁니다~)</p>
+<p>결과를 보면,<br>각 체인을 <strong>병렬로 실행한 후, 각 응답 결과를 capital과 area의 키의 값으로 넣어 딕셔너리를 반환</strong>하고 있습니다.</p>
 <blockquote>
-<h3 id="깨알-tip-1" style="position:relative;"><a href="#%EA%B9%A8%EC%95%8C-tip-1" aria-label="깨알 tip 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>💡깨알 Tip</h3>
-<p><strong>Q1. 병렬로 연결한 chain들의 input_variables이 다르다면?</strong>
+<h3 id="깨알-tip-2" style="position:relative;"><a href="#%EA%B9%A8%EC%95%8C-tip-2" aria-label="깨알 tip 2 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>💡깨알 Tip</h3>
+<p><strong>Q1. 병렬로 연결한 Chain들의 input_variables이 다르다면?</strong><br>
 => 호출 메서드(여기서 invoke)의 입력값에 <strong>하나의 딕셔너리에 input_variables 값들을 모두 넣어주면 된다!!</strong></p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># input_variables: country2</span>
 chain1 <span class="token operator">=</span> <span class="token punctuation">(</span>
-    PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country1} 의 수도는 어디야?"</span><span class="token punctuation">)</span>
-    <span class="token operator">|</span> model
-    <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country1} 의 수도는 어디야?"</span><span class="token punctuation">)</span>
+ <span class="token operator">|</span> model
+ <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span>
 
 <span class="token comment"># input_variables: country2</span>
 chain2 <span class="token operator">=</span> <span class="token punctuation">(</span>
-    PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country2} 의 면적은 얼마야?"</span><span class="token punctuation">)</span>
-    <span class="token operator">|</span> model
-    <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country2} 의 면적은 얼마야?"</span><span class="token punctuation">)</span>
+ <span class="token operator">|</span> model
+ <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span>
 
 combined <span class="token operator">=</span> RunnableParallel<span class="token punctuation">(</span>capital<span class="token operator">=</span>chain1<span class="token punctuation">,</span> area<span class="token operator">=</span>chain2<span class="token punctuation">)</span>
 <span class="token comment"># ⭐️ 하나의 딕셔너리에 input_variables 값을 넣어줌 ⭐️</span>
 combined<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"country1"</span><span class="token punctuation">:</span> <span class="token string">"대한민국"</span><span class="token punctuation">,</span> <span class="token string">"country2"</span><span class="token punctuation">:</span> <span class="token string">"미국"</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p> </p>
-<p><strong>Q2. 병렬로 묶은 chain들을 배치 가능한가?</strong>
+<p><strong>Q2. 병렬로 묶은 Chain들을 배치 가능한가?</strong><br>
 => <del>쌉가능</del> 매우 가능. <strong>RunnableParallel() 객체 또한 Runnable이기 때문에 동일한 batch 실행 인터페이스로 호출 가능합니다요.</strong></p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># input_variables: country2</span>
 chain1 <span class="token operator">=</span> <span class="token punctuation">(</span>
-    PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country1} 의 수도는 어디야?"</span><span class="token punctuation">)</span>
-    <span class="token operator">|</span> model
-    <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country1} 의 수도는 어디야?"</span><span class="token punctuation">)</span>
+ <span class="token operator">|</span> model
+ <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span>
 
 <span class="token comment"># input_variables: country2</span>
 chain2 <span class="token operator">=</span> <span class="token punctuation">(</span>
-    PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country2} 의 면적은 얼마야?"</span><span class="token punctuation">)</span>
-    <span class="token operator">|</span> model
-    <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country2} 의 면적은 얼마야?"</span><span class="token punctuation">)</span>
+ <span class="token operator">|</span> model
+ <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span>
 
 combined <span class="token operator">=</span> RunnableParallel<span class="token punctuation">(</span>capital<span class="token operator">=</span>chain1<span class="token punctuation">,</span> area<span class="token operator">=</span>chain2<span class="token punctuation">)</span>
@@ -296,45 +325,219 @@ combined<span class="token punctuation">.</span>invoke<span class="token punctua
 <li>각 배치의 체인의 결과는 capital, area로 받으면서</li>
 <li>각 체인의 input_variables는 첫번째 배치에서는 대한민국, 미국, 두번째 배치에서는 일본, 중국을 넣어줌</li>
 </ol>
-<p>그럼 최종 결과는 첫번째  <code class="language-text">{"country1": "대한민국", "country2": "미국"}</code>로 넣은 결과와 두번째  <code class="language-text">{"country1": "일본", "country2": "중국"}</code>로 넣은 결과를 리스트로 묶은 것이 나오겠죠?
+<p>그럼 최종 결과는 첫번째  <code class="language-text">{"country1": "대한민국", "country2": "미국"}</code>로 넣은 결과와 두번째  <code class="language-text">{"country1": "일본", "country2": "중국"}</code>로 넣은 결과를 리스트로 묶은 것이 나오겠죠?<br>
 즉, 최종 응답 결과는 capital, area 키와 값을 갖는 딕셔너리 2개를 리스트로 묶은 것이다!</p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># 출력</span>
 <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">'capital'</span><span class="token punctuation">:</span> <span class="token string">'대한민국의 수도는 서울입니다.'</span><span class="token punctuation">,</span> <span class="token string">'area'</span><span class="token punctuation">:</span> <span class="token string">'대한민국의 면적은 약 100,363km² 입니다.'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
  <span class="token punctuation">{</span><span class="token string">'capital'</span><span class="token punctuation">:</span> <span class="token string">'미국의 수도는 워싱턴 D.C.입니다.'</span><span class="token punctuation">,</span> <span class="token string">'area'</span><span class="token punctuation">:</span> <span class="token string">'미국의 면적은 대략 9,833,520 제곱 킬로미터이며, 이는 세계에서 세 번째로 넓은 국가입니다.'</span><span class="token punctuation">}</span><span class="token punctuation">]</span></code></pre></div>
 <p>아, 참고로 병렬처리는 각 배치에서 <strong>chain 결과 받아오는 것을 병렬로 처리</strong>되는 것이니까 헷갈리지 않도록.</p>
+<p> </p>
+<p><strong>Q3. Chain에 RunnablePassthrough()를 이용해 직접 딕셔너리를 만들었는데, chain들을 병렬로 RunnableParallel()로 병렬로 연결한다면 입력 변수가 서로 다를 때는 어떻게 전달해야 하는 것인가?</strong> (참고로 입력변수 서로 같으면 그냥 값만 넣어도 됩니다.)</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">chain1 <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token punctuation">{</span><span class="token string">"country1"</span><span class="token punctuation">:</span> RunnablePassthrough<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+    <span class="token operator">|</span> PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country1} 의 수도는?"</span><span class="token punctuation">)</span>
+    <span class="token operator">|</span> ChatOpenAI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+chain2 <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token punctuation">{</span><span class="token string">"country2"</span><span class="token punctuation">:</span> RunnablePassthrough<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+    <span class="token operator">|</span> PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country2} 의 면적은?"</span><span class="token punctuation">)</span>
+    <span class="token operator">|</span> ChatOpenAI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+
+combined_chain <span class="token operator">=</span> RunnableParallel<span class="token punctuation">(</span>capital<span class="token operator">=</span>chain1<span class="token punctuation">,</span> area<span class="token operator">=</span>chain2<span class="token punctuation">)</span>
+combined_chain<span class="token punctuation">.</span>invoke<span class="token comment">#("여기에 무엇을 넣어야 하는 것인가?")</span></code></pre></div>
+<p>(❌) combined_chain.invoke({“country1”: “대한민국”, “country2”: “대한민국”})<br>
+(❌) combined_chain.invoke(“대한민국”)<br>
+입력 변수명이 달라서 이런 식으로는 다 안 됩니다.</p>
+<p>마음 편히 하는 방법은 chain을 좀 뜯어 고치는 것.</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> langchain<span class="token punctuation">.</span>schema<span class="token punctuation">.</span>runnable <span class="token keyword">import</span> RunnableLambda
+
+chain1 <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token comment"># 방법: RunnableLambda를 사용해 country1 키에 값을 매핑</span>
+    <span class="token punctuation">{</span><span class="token string">"country1"</span><span class="token punctuation">:</span> RunnableLambda<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token string">"country1"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+    <span class="token operator">|</span> PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country1} 의 수도는?"</span><span class="token punctuation">)</span>
+    <span class="token operator">|</span> ChatOpenAI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+
+chain2 <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token comment"># 방법: RunnableLambda를 사용해 country2 키에 값을 매핑</span>
+    <span class="token punctuation">{</span><span class="token string">"country2"</span><span class="token punctuation">:</span> RunnableLambda<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token string">"country2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+    <span class="token operator">|</span> PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{country2} 의 면적은?"</span><span class="token punctuation">)</span>
+    <span class="token operator">|</span> ChatOpenAI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+
+combined_chain <span class="token operator">=</span> RunnableParallel<span class="token punctuation">(</span>capital<span class="token operator">=</span>chain1<span class="token punctuation">,</span> area<span class="token operator">=</span>chain2<span class="token punctuation">)</span>
+
+combined_chain<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment"># 방법: country1, country2 키에 각각 값을 전달</span>
+        <span class="token string">"country1"</span><span class="token punctuation">:</span> <span class="token string">"대한민국"</span><span class="token punctuation">,</span>
+        <span class="token string">"country2"</span><span class="token punctuation">:</span> <span class="token string">"대한민국"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span></code></pre></div>
+<p><strong>아래에서 배울 RunnableLambda() 함수를 이용해서 직접 입력 값에서 꺼내어 쓰면 됩니다.</strong></p>
+<p>굳👍🏻</p>
 </blockquote>
 <p> </p>
-<h4 id="2-값-전달-runnablepassthrough" style="position:relative;"><a href="#2-%EA%B0%92-%EC%A0%84%EB%8B%AC-runnablepassthrough" aria-label="2 값 전달 runnablepassthrough permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 값 전달: RunnablePassthrough</h4>
-<p>RunnablePassthrough는 값을 그대로 전달해주는 친구입니다.</p>
-<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>runnables <span class="token keyword">import</span> RunnablePassthrough
+<p><strong>Q. Runnable 병렬 연결, RunnablePassthrough(), RunnablePassthrough.assign() 메서드, 일반 lambda 함수에 관한 복잡한 예시의 결과를 예상해봅시다.</strong></p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>runnables <span class="token keyword">import</span> RunnableParallel
 
-RunnablePassthrough<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"num"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token comment"># 출력: {"num": 10}</span></code></pre></div>
-<p>이렇게 RunnablePassthrough()에서 invoke 메서드 호출하면 입력값 그대로 출력됩니다.</p>
-<p>일반적으로 invoke() 통해 Runnable 실행할 때는 사용자 입력은 <strong>딕셔너리 형태</strong>로 전달하잖아요?
-<strong>사용자 입력을 딕셔너리가 아닌 ‘입력 변수의 값’만 받고, RunnablePassthrough를 통해서 chain 내부에서 입력(딕셔너리 형태) 키의 값으로 곧바로 넣어줄 수가 있습니다.</strong></p>
-<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># chain에 딕셔너리 {입력 변수명: RunnablePassthrough()}를 넣고 연결해줌</span>
-runnable_chain <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"num"</span><span class="token punctuation">:</span> RunnablePassthrough<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">|</span> prompt <span class="token operator">|</span> ChatOpenAI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+runnable <span class="token operator">=</span> RunnableParallel<span class="token punctuation">(</span>
+    passed<span class="token operator">=</span>RunnablePassthrough<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    extra<span class="token operator">=</span>RunnablePassthrough<span class="token punctuation">.</span>assign<span class="token punctuation">(</span>mult<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token string">"num"</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    modified<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token string">"num"</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
 
-<span class="token comment"># 사용자 입력은 입력 변수의 '값'만 받음</span>
-runnable_chain<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span></code></pre></div>
-<p><strong>그럼 이것의 장점이 뭐냐?</strong>
-<strong>=> 체인 설계할 때  딕셔너리 형태로 변수를 미리 다 넣어 두고, 입력 변수 넣고 호출할 때는 변수명 기억 못해도 값만 넣을 수 있음!!</strong></p>
+runnable<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"num"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<ol>
+<li>최종 응답 결과는 RunnableParallel 내부를 병렬로 실행하여 각 결과를 passed, extra, modified 키의 값으로 하는 딕셔너리 형태로 반환한다.</li>
+<li><code class="language-text">passed</code>: 입력  <code class="language-text">{"num": 1}</code> 그대로 반환함</li>
+<li><code class="language-text">extra</code>: 입력  <code class="language-text">{"num": 1}</code>를 x로 받아와서 num의 값 1에 3을 곱한 값을 mult에 ‘추가 할당’하여 결과 <code class="language-text">{"num": 1, "mult": 3}</code>을 반환함</li>
+<li><code class="language-text">modified</code>: 입력  <code class="language-text">{"num": 1}</code>를 x로 받아와서 num의 값 1에 1을 더하여 반환함</li>
+</ol>
+<p>그래서 최종 결과는 <code class="language-text">{'passed': {'num': 1}, 'extra': {'num': 1, 'mult': 3}, 'modified': 2}</code>가 나옵니다.</p>
+<p> </p>
+<h3 id="3-사용자-정의-함수-매핑-runnablelambda" style="position:relative;"><a href="#3-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%ED%95%A8%EC%88%98-%EB%A7%A4%ED%95%91-runnablelambda" aria-label="3 사용자 정의 함수 매핑 runnablelambda permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 사용자 정의 함수 매핑: RunnableLambda</h3>
+<p>함수를 호출한 후에 프롬프트에 넣고 싶을 때 사용합니다. RunnableLambda(사용자 정의 함수)로 이용하면 됩니다.</p>
+<p>대충, 머릿 속으로 그려보자면</p>
 <blockquote>
-<h3 id="깨알-tip-2" style="position:relative;"><a href="#%EA%B9%A8%EC%95%8C-tip-2" aria-label="깨알 tip 2 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>💡깨알 Tip</h3>
-<p>**RunnablePassthrough.assign()**을 이용해서 RunnablePassthrough의 <strong>입력 key/valu</strong>e와 <strong>새롭게 할당할 key/value를 통합할 수 있다.</strong>
-=> **RunnablePassthrough.assign(새롭게 할당할 key이름=Runnable/lambda 함수).invoke({입력 key: value})**을 이용하면 된다.</p>
-<p><strong>즉, 입력은 그대로 가져오면서 assign을 통해 새로운 key/value도 가져와 출력한다.</strong></p>
-<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># "RunnablePassthrough.assign(new_num=lambda x: x["num"] * 3)"에 입력 {"num": 1}을 넣음</span>
-<span class="token comment"># 입력 {"num": 1} 자체가 x로 들어감 (x={"num": 1})</span>
-<span class="token comment"># x["num"] * 3 결과를 new_num 키의 값에 넣어 새로운 key/value 만듦</span>
-<span class="token comment"># 입력은 그대로 가져오면서 assign을 통해 새로운 key/value도 가져와 출력한다.</span>
-<span class="token punctuation">(</span>RunnablePassthrough<span class="token punctuation">.</span>assign<span class="token punctuation">(</span>new_num<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token string">"num"</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"num"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token comment"># 출력: {'num': 1, 'new_num': 3}</span></code></pre></div>
+<p>invoke(입력 변수) -> RunnableLambda(사용자 정의 함수)을 통해 프롬프트에 전달</p>
+</blockquote>
+<p>이런 식이 될 것 같은데, 이때 <strong>사용자 정의 함수는 정말 함수 이름만 작성합니다.</strong></p>
+<p>그렇다면,<br>
+사용자 정의 함수 즉, 함수가 있다는 것은 매개변수를 전달하는 상황이 있을 텐데, <strong>전달하는 입력 변수가 딕셔너리 형태</strong>일 때는</p>
+<ol>
+<li>직접 키로 접근하는 방법 뿐만 아니라</li>
+<li><strong>operator 라이브러리의 itemgetter 모듈을 이용하여 접근하는 방법</strong>이 있습니다.</li>
+</ol>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">chain <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">"a"</span><span class="token punctuation">:</span> itemgetter<span class="token punctuation">(</span><span class="token string">"word1"</span><span class="token punctuation">)</span> <span class="token operator">|</span> RunnableLambda<span class="token punctuation">(</span>length_function<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">"b"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"text1"</span><span class="token punctuation">:</span> itemgetter<span class="token punctuation">(</span><span class="token string">"word1"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"text2"</span><span class="token punctuation">:</span> itemgetter<span class="token punctuation">(</span><span class="token string">"word2"</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+        <span class="token operator">|</span> RunnableLambda<span class="token punctuation">(</span>multiple_length_function<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">|</span> prompt
+    <span class="token operator">|</span> model
+<span class="token punctuation">)</span>
+
+chain<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"word1"</span><span class="token punctuation">:</span> <span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token string">"word2"</span><span class="token punctuation">:</span> <span class="token string">"world"</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<p>요런 느낌으로 각 입력 <code class="language-text">{"word1": "hello", "word2": "world"}</code>에서 <code class="language-text">itemgetter("word1")</code>, <code class="language-text">itemgetter("word2")</code>을 이용해서 각 키의 값을 꺼내어 쓸 수 있습니다.</p>
+<blockquote>
+<p><strong>Q. 그러면 그냥 딕셔너리에서 직접 키 값으로 접근하며 되지, 왜 itemgetter()을 이용하나요?</strong></p>
+<p>=> operator.itemgetter()을 작성하면, ""내가 이것을 뽑아 쓸 거다”라는 <strong>명확성</strong>과 간결함을 제공하기 때문입니다.</p>
 </blockquote>
 <p> </p>
-<h3 id="3" style="position:relative;"><a href="#3" aria-label="3 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.</h3>
-<p>일단 여기까지 올리고 수정해야겠다.</p>
+<p>그러면 입력 변수가 여러 개는…? <del>(딕셔너리 1개에 여러 개 있는 것 말고, 진짜 여러 개 말하는 것임)</del></p>
+<blockquote>
+<p><strong>Q. 입력 변수가 여러 개면 사용자 정의 함수에 어떻게 전달하는 것인가?</strong></p>
+<p>=> 결론부터 말하면, <strong>입력 변수는 반드시 하나</strong>여야 합니다.</p>
+<p>입력 변수가 1개면 매개변수도 하나일테니 적당히 잘 매칭될 것 같은데,<br>
+입력 변수가 2개면 어떻게 매칭하나 걱정이 됐습니다.</p>
+<p>그런데, 여기서 <strong>입력 변수는 반드시 하나여야 하며,<br>여러 개를 전달하고 싶을 땐 반드시 딕셔너리를 이용해서 전달해준 후 이를 전달 받아서 키의 값을 읽는 형태로 이용</strong>하여야 합니다.</p>
+<p>그래서 <strong>사용자 정의함수에서 매개변수는 보통 딕셔너리 1개 받는 형태로써 다루게 됩니다.</strong> (_dict !!)</p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> operator <span class="token keyword">import</span> itemgetter
+
+<span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>prompts <span class="token keyword">import</span> ChatPromptTemplate
+<span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>runnables <span class="token keyword">import</span> RunnableLambda
+<span class="token keyword">from</span> langchain_openai <span class="token keyword">import</span> ChatOpenAI
+
+
+<span class="token comment"># 문장의 길이를 반환하는 함수입니다.</span>
+<span class="token keyword">def</span> <span class="token function">length_function</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+
+<span class="token comment"># 두 문장의 길이를 곱한 값을 반환하는 함수입니다.</span>
+<span class="token keyword">def</span> <span class="token function">_multiple_length_function</span><span class="token punctuation">(</span>text1<span class="token punctuation">,</span> text2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>text1<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>text2<span class="token punctuation">)</span>
+
+<span class="token comment"># ⭐️ 딕셔너리를 매개변수로 받아오기 떄문에 _dict로 받음 ⭐️</span>
+<span class="token keyword">def</span> <span class="token function">multiple_length_function</span><span class="token punctuation">(</span>_dict<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> _multiple_length_function<span class="token punctuation">(</span>_dict<span class="token punctuation">[</span><span class="token string">"text1"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> _dict<span class="token punctuation">[</span><span class="token string">"text2"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+
+prompt <span class="token operator">=</span> ChatPromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span><span class="token string">"{a} + {b} 는 무엇인가요?"</span><span class="token punctuation">)</span>
+model <span class="token operator">=</span> ChatOpenAI<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+chain1 <span class="token operator">=</span> prompt <span class="token operator">|</span> model
+
+chain <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment"># 입력 변수 딕셔너리에서 값을 꺼내어 사용자 정의 함수 length_function에 전달</span>
+        <span class="token comment"># ⭐️ 즉, length_function에 word1의 값 1개를 전달 ⭐️</span>
+        <span class="token string">"a"</span><span class="token punctuation">:</span> itemgetter<span class="token punctuation">(</span><span class="token string">"word1"</span><span class="token punctuation">)</span> <span class="token operator">|</span> RunnableLambda<span class="token punctuation">(</span>length_function<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token string">"b"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"text1"</span><span class="token punctuation">:</span> itemgetter<span class="token punctuation">(</span><span class="token string">"word1"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"text2"</span><span class="token punctuation">:</span> itemgetter<span class="token punctuation">(</span><span class="token string">"word2"</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+        <span class="token comment"># ⭐️ multiple_length_function에 {"text1": itemgetter("word1"), "text2": itemgetter("word2")} 1개를 전달 ⭐️</span>
+        <span class="token operator">|</span> RunnableLambda<span class="token punctuation">(</span>multiple_length_function<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">|</span> prompt
+    <span class="token operator">|</span> model
+<span class="token punctuation">)</span>
+
+<span class="token comment"># 입력변수: {"word1": "hello", "word2": "world"}</span>
+chain<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"word1"</span><span class="token punctuation">:</span> <span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token string">"word2"</span><span class="token punctuation">:</span> <span class="token string">"world"</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+</blockquote>
+<p> </p>
+<blockquote>
+<h3 id="깨알-tip-3" style="position:relative;"><a href="#%EA%B9%A8%EC%95%8C-tip-3" aria-label="깨알 tip 3 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>💡깨알 Tip</h3>
+<p><strong>RunnableLambda 내부 사용자 정의 함수를 invoke() 메서드로 호출 시,<br>입력 변수가 그 함수의 매개변수로 값을 전달해줘야 하기 때문에, 실제로 그 함수에서 입력 변수를 사용하지 않더라도 매개 변수를 써줘야 한다.</strong></p>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>output_parsers <span class="token keyword">import</span> StrOutputParser
+<span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>prompts <span class="token keyword">import</span> PromptTemplate
+<span class="token keyword">from</span> langchain_openai <span class="token keyword">import</span> ChatOpenAI
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+<span class="token keyword">from</span> langchain_core<span class="token punctuation">.</span>runnables <span class="token keyword">import</span> RunnableLambda<span class="token punctuation">,</span> RunnablePassthrough
+
+
+<span class="token keyword">def</span> <span class="token function">get_today</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">:</span>
+ <span class="token comment"># 오늘 날짜를 가져오기</span>
+ <span class="token keyword">return</span> datetime<span class="token punctuation">.</span>today<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">"%b-%d"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 오늘 날짜를 출력</span>
+<span class="token comment"># print(get_today(None))</span>
+
+
+<span class="token comment"># prompt 와 llm 을 생성합니다.</span>
+prompt <span class="token operator">=</span> PromptTemplate<span class="token punctuation">.</span>from_template<span class="token punctuation">(</span>
+ <span class="token string">"{today} 가 생일인 유명인 {n} 명을 나열하세요. 생년월일을 표기해 주세요."</span>
+<span class="token punctuation">)</span>
+llm <span class="token operator">=</span> ChatOpenAI<span class="token punctuation">(</span>temperature<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> model_name<span class="token operator">=</span><span class="token string">"gpt-4.1-mini"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># chain 을 생성합니다.</span>
+chain <span class="token operator">=</span> <span class="token punctuation">(</span>
+
+ <span class="token punctuation">{</span><span class="token string">"today"</span><span class="token punctuation">:</span> RunnableLambda<span class="token punctuation">(</span>get_today<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"n"</span><span class="token punctuation">:</span> RunnablePassthrough<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+ <span class="token operator">|</span> prompt
+ <span class="token operator">|</span> llm
+ <span class="token operator">|</span> StrOutputParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>chain<span class="token punctuation">.</span>invoke<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
+<ol>
+<li><code class="language-text">chain.invoke(3)</code>에서 3을 <code class="language-text">RunnableLambda(get_today)</code>에서 사용자 정의 함수 <code class="language-text">get_today</code>에 전달한다.</li>
+<li><code class="language-text">get_today</code>는 그 3을 이용하지 않더라도, 매개변수를 작성해야 하므로 <code class="language-text">def get_today(a):</code> 라고 작성한다.</li>
+</ol>
+<p>(참고로 get_today() 함수를 호출할 때는 입력변수에 None과 같이 매개변수 값을 써줘야 한다.)</p>
+<p>LangSmith에서 직접 확인해보면 이런 흐름으로 진행되었음을 확인할 수 있습니다.</p>
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; ">
+      <span class="gatsby-resp-image-background-image" style="padding-bottom: 51.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAABD0lEQVQoz5WSS07DMBRFuwIgjmPHn8T5QWijtqg0RR0wKCPECtj/Rg5KpHRCScvgSs/y9fF9z16EoiYLNWnqUMogYkUsNSqW6O5A+/nNdtXx3G1IfCAe9i9IiASpDAtnUrqmoi5qtLFED4LoXhDdCVJlyHwghIo8L0cNB/+CDlpUrz1fHy9s+z1P+zdCt8E0LbZdYkI1wuYAv4C79yOH04llf+Rx15N1a3TTYtoVOivIs2Icx7VkZ6CRkuA8IS/HFgdZ7TDKEIuERBmSJL0dqLRDp25MkRqPsRnOB6zLkVKPcxuAN7cshCSKLmswlGWDtf72hNcM3gecy88XzH2bWeBkUMr+75XnYFM9rad6Tj9dVf7M+TmMqQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="img 1" title="img 1" src="/static/98e0bb52d22267b2de807136aab5ce60/37523/img_1.png" srcset="/static/98e0bb52d22267b2de807136aab5ce60/e9ff0/img_1.png 180w,
+/static/98e0bb52d22267b2de807136aab5ce60/f21e7/img_1.png 360w,
+/static/98e0bb52d22267b2de807136aab5ce60/37523/img_1.png 720w,
+/static/98e0bb52d22267b2de807136aab5ce60/302a4/img_1.png 1080w,
+/static/98e0bb52d22267b2de807136aab5ce60/07a9c/img_1.png 1440w,
+/static/98e0bb52d22267b2de807136aab5ce60/3d22e/img_1.png 2010w" sizes="(max-width: 720px) 100vw, 720px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy" decoding="async">
+    </span>
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; ">
+      <span class="gatsby-resp-image-background-image" style="padding-bottom: 57.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABZElEQVQoz32SyW7CMBiE8wZAEi+xncVxSFgUIKBCKbSovVRqD7216vs/yFR2CQpiOXz6Y8saz4zjxbGGSgw4VyCEw/cJgoCg5zPMC4HvwwjD0QyLeQOlDUIujmeom91vwgQ8pSTWswrT8RSxNiCU/x8IKBiTkCpDmmjEcYYk0SeBW3hRmmNXxzBKQqkMjHAMer6DhAxFUSEM2YWrrrszwe3XB95+f7B8/0Qxa5AtH5DtX6APr5DTGjrNIWTi6qA0Os2WC0GzeUS53cHMGhSbLYZPz6j2B1RWsJog4tJFbUlTS44sM64GK9p16tGQuZiMRg5OI0RMILK3+wRJqsGYuIh6M7Lf6WXQMggdtjvrhrJzF/cexrv3YhYbUevCkedDF9WYEsYMz+K207t3o90vyzEWi5WjaVao6wVWqzUmk/qq65uC7R7nElImUCp1CBGf1raSq5HvCfrHTvv9wNH2a7n2b/4BWTgeSdGVbqIAAAAASUVORK5CYII='); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="img 2" title="img 2" src="/static/33293e51d1c8b0b0e615d9c783f5abd0/37523/img_2.png" srcset="/static/33293e51d1c8b0b0e615d9c783f5abd0/e9ff0/img_2.png 180w,
+/static/33293e51d1c8b0b0e615d9c783f5abd0/f21e7/img_2.png 360w,
+/static/33293e51d1c8b0b0e615d9c783f5abd0/37523/img_2.png 720w,
+/static/33293e51d1c8b0b0e615d9c783f5abd0/302a4/img_2.png 1080w,
+/static/33293e51d1c8b0b0e615d9c783f5abd0/07a9c/img_2.png 1440w,
+/static/33293e51d1c8b0b0e615d9c783f5abd0/0486e/img_2.png 2008w" sizes="(max-width: 720px) 100vw, 720px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy" decoding="async">
+    </span>
+</blockquote>
+<p> </p>
+<p> </p>
+<p>끄-읕.</p>
 <div class="table-of-contents">
 <ul>
 <li>
@@ -364,14 +567,16 @@ runnable_chain<span class="token punctuation">.</span>invoke<span class="token p
 <li>
 <p><a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EB%8B%AC-%EB%B0%A9%EB%B2%95">데이터 전달 방법</a></p>
 <ul>
-<li><a href="#1-chain-%EB%B3%91%EB%A0%AC-%EC%97%B0%EA%B2%B0-runnableparallel">1. Chain 병렬 연결: RunnableParallel</a></li>
-<li><a href="#2-%EA%B0%92-%EC%A0%84%EB%8B%AC-runnablepassthrough">2. 값 전달: RunnablePassthrough</a></li>
+<li><a href="#1-%EA%B0%92-%EC%A0%84%EB%8B%AC-runnablepassthrough">1. 값 전달: RunnablePassthrough</a></li>
 </ul>
 </li>
 <li>
-<p><a href="#3">3.</a></p>
+<p><a href="#2-runnable-%EB%B3%91%EB%A0%AC-%EC%97%B0%EA%B2%B0-runnableparallel">2. Runnable 병렬 연결: RunnableParallel</a></p>
+</li>
+<li>
+<p><a href="#3-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%ED%95%A8%EC%88%98-%EB%A7%A4%ED%95%91-runnablelambda">3. 사용자 정의 함수 매핑: RunnableLambda</a></p>
 </li>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/25-12-11_1/"><div class="direction">이전 글</div><div class="title">[LLM] 테디노트의 RAG 비법노트 끄적끄적-1</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2025<!-- --> <a href="https://github.com/byeonwoojung">변우중</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/25-12-12_1/";window.___webpackCompilationHash="d9848efd46dc25eb9eb0";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-e9aec46fbad105fe033a.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0c0343971fc4e4de204f.js"],"component---src-pages-404-js":["/component---src-pages-404-js-17d58f25a4e702368c00.js"],"component---src-pages-about-js":["/component---src-pages-about-js-9c71fcc69d6480b17757.js"],"component---src-pages-index-js":["/component---src-pages-index-js-52063b8d43db9dac9ded.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-e4a4454bcf043392693e.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-1d536f2c18242f4bae7c.js"]};/*]]>*/</script><script src="/app-e9aec46fbad105fe033a.js" async=""></script><script src="/framework-340155fd46b04d309a3e.js" async=""></script><script src="/webpack-runtime-b6711d36557df81bb8c1.js" async=""></script></body></html>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/25-12-11_1/"><div class="direction">이전 글</div><div class="title">[LLM] 테디노트의 RAG 비법노트 끄적끄적-1</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/25-12-13_1/"><div class="direction">다음 글</div><div class="title">[LLM] 테디노트의 RAG 비법노트 끄적끄적-3</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2025<!-- --> <a href="https://github.com/byeonwoojung">변우중</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/25-12-12_1/";window.___webpackCompilationHash="d9848efd46dc25eb9eb0";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-e9aec46fbad105fe033a.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0c0343971fc4e4de204f.js"],"component---src-pages-404-js":["/component---src-pages-404-js-17d58f25a4e702368c00.js"],"component---src-pages-about-js":["/component---src-pages-about-js-9c71fcc69d6480b17757.js"],"component---src-pages-index-js":["/component---src-pages-index-js-52063b8d43db9dac9ded.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-e4a4454bcf043392693e.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-1d536f2c18242f4bae7c.js"]};/*]]>*/</script><script src="/app-e9aec46fbad105fe033a.js" async=""></script><script src="/framework-340155fd46b04d309a3e.js" async=""></script><script src="/webpack-runtime-b6711d36557df81bb8c1.js" async=""></script></body></html>
