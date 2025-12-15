@@ -15,10 +15,11 @@
 
 안녕하세요! ML/AI 엔지니어 변우중입니다. 🚀
 
-이 블로그는 제가 학습하고 경험한 **머신러닝, 자연어 처리, 데이터 분석** 관련 지식과 프로젝트를 기록하는 공간입니다.  
+이 블로그는 제가 학습하고 경험한 **머신러닝, 자연어 처리, 데이터 분석** 관련 지식과 프로젝트를 기록하는 공간입니다.
 "오늘도 달리는, 내일이 달라지는" 마인드로 꾸준히 성장하고 있습니다.
 
 ### 📧 Contact
+
 - **Email**: ricenuu.ds@gmail.com
 - **GitHub**: [@byeonwoojung](https://github.com/byeonwoojung)
 
@@ -34,23 +35,26 @@
 ## 🚀 주요 활동 (Activity)
 
 ### 현재 진행 중
+
 - **먹방 유튜버 방문 음식점 지도 서비스** (2025.10 ~)
   - AI 기반 유튜브 콘텐츠 분석 자동화
   - 음식점 정보 추출 및 지도 시각화
   - **Tech**: Python, TypeScript
 
 ### 완료된 프로젝트
+
 - **독자 AI 파운데이션 모델 프로젝트** (2025.09 ~ 2025.11)
+
   - Agentic Tool Use 데이터 가공 구축
   - 주식회사 플리토(프리랜서)
-
 - **프랜차이즈 예비 창업자를 위한 AI 요약보고서 생성** (2025.07 ~ 2025.09)
+
   - 5개 데이터 소스 통합 (정보공개서, 한국부동산원, 행정안전부 등)
   - RAG 기반 맞춤형 브랜드 추천 시스템
   - **Tech**: Python, RAG, PySpark, SQL, Langchain, OpenAI API
-  - [📹 발표 영상](https://www.youtube.com/watch?v=aKPvZjedt4o) | [💻 GitHub](https://github.com/da-analysis/asac_8_dataanalysis)
-
+  - [📹 시연 영상](https://www.youtube.com/watch?v=aKPvZjedt4o) | [💻 GitHub](https://github.com/da-analysis/asac_8_dataanalysis)
 - **섬네일·제목·오디오 기반 유튜브 플레이리스트 조회수 예측** (2025.04 ~ 2025.07)
+
   - 멀티모달 데이터(이미지, 텍스트, 오디오) 통합 분석
   - ML 모델링을 통한 조회수 예측
   - **Tech**: PyTorch, TensorFlow, Scikit-learn, Wav2Vec2, OpenCV
@@ -59,21 +63,25 @@
 ## 🛠 기술 스택
 
 ### AI/ML
+
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
 
 ### NLP & LLM
+
 ![Langchain](https://img.shields.io/badge/Langchain-121212?style=flat)
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
 
 ### Data Engineering
+
 ![Apache Spark](https://img.shields.io/badge/Apache%20Spark-E25A1C?style=flat&logo=apachespark&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=mysql&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
 
 ### Development
+
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
 
