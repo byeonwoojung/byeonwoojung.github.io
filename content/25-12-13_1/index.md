@@ -97,7 +97,7 @@ print("B) 타입:", type(result_b))
 
 ### 1) `BaseModel` / `Field`는 무엇인가?
 
-- **`BaseModel`**: 상속받는 부모 모델
+- **`BaseModel`**: 상속받는 부모 모델 (여기서는 pydantic 라이브러리의 BaseModel 모듈을 상속 받는 것임)
 
 - **`Field`**: 각 필드의 의미/제약(설명, 기본값 등)을 붙이는 **메타데이터**
   - LLM에게 “이 필드는 이런 의미”라고 알려줘서 출력 품질을 올려줄 수 있습니다.
@@ -109,13 +109,15 @@ print("B) 타입:", type(result_b))
       변수명: 변수타입 = Field(description="변수 관련 설명")
   ```
 
-  
 
-### 2) `partial_variables`를 넣으면 항상 형식이 맞나?
+&nbsp;
 
-- **아닙니다. 프롬프트에 지침 문자열을 미리 채워 넣어주는 기능이라, LLM이 지침을 따를 확률만 높여줄 뿐입니다.**
-- ⭐️ **진짜 강제는 parser가 합니다.** ⭐️
-  - LLM 출력이 스키마와 다르면 `PydanticOutputParser`가 파싱 실패로 **에러 발생**
+### 2) `partial_variables`는 무엇인가?
+
+- 미리 프롬프트에 문자열을 채워주는 기능입니다.
+- 여기서는 프롬프트 내부 변수에서 `format_instructions` 값을 채워주고 있습니다.
+
+&nbsp;
 
 ### 3) `format_instructions`는 원래 있는 변수인가?
 
@@ -152,8 +154,16 @@ The output should be formatted as a JSON instance that conforms to the JSON sche
 주의: 추가 설명 금지. JSON만 출력.
 ```
 
-**이렇게 출력 형식을 정해준 후에, chain_str_input에서 마지막 parser가 형식이 맞는지 확인합니다.**<br>
-**이떼, 형식이 맞지 않으면 이때 에러가 발생하는 것입니다.**
+**이렇게 출력 형식을 정해준 후에, chain_str_input에서 마지막 parser가 형식에 맞게 파싱을 합니다.**
+
+&nbsp;
+
+### 4. 프롬프트에 출력 포맷을 정해준다고 형식을 정확히 따르는가?
+
+* **아닙니다. 프롬프트에 지침 문자열을 미리 채워 넣어주는 기능이라, LLM이 지침을 따를 확률만 높여줄 뿐입니다.**
+* ⭐️ **진짜 강제는 parser가 합니다.** ⭐️: LLM 출력이 스키마와 다르면 `PydanticOutputParser`가 파싱 실패로 **에러 발생**한다고 합니다.
+* **`OutputFixingParser`를 이용해서 다시 고쳐달라는 요청을 보낼 수 있고, `RetryOutputParser`을 이용해서 처음 보냈던 프롬프트와 잘못된 답변을 모두 함께 주어 재시도를 수행할 수도 있습니다.**
+* **또는, `with_fallbacks`을 이용해서 플랜 B 체인을 준비해둘 수도 있습니다.**
 
 이해 완.
 

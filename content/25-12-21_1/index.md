@@ -43,7 +43,9 @@ LLM은 수렴보다 발산을 더 잘하기 떄문에 응답의 포맷을 정해
 이 메서드들은 파서 객체를 생성하고, `get_format_instructions()` 메서드로 어떻게 출력결과를 파싱하는지 출력하여 확인 가능합니다.
 
 ````python
-# BaseModel: 부모로부터 상속받음
+from pydantic import BaseModel, Field
+
+# BaseModel: pydantic 라이브러리의 BaseModel 모듈을 상속 받음
 # description: 필드에 대한 설명(자세히 작성 필요)
 class EmailSummary(BaseModel):
     person: str = Field(description="메일을 보낸 사람")

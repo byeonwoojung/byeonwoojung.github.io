@@ -16,7 +16,7 @@ categories: NLP LLM
 
 &nbsp;
 
-그 전에 잠시!!`<br>`딕셔너리 키워드 인자 전달하는 파이썬 문법 확인하고 가고자 합니다~
+그 전에 잠시!!<br>딕셔너리 키워드 인자 전달하는 파이썬 문법 확인하고 가고자 합니다~
 
 ```python
 from langchain_core.prompts.few_shot import FewShotPromptTemplate
@@ -95,7 +95,7 @@ example의 첫번째
 
 LLM에게 예시 몇 가지를 `FewShotPromptTemplate`을 활용해 던져주는 방법을 알아봅시다.
 
-사실, 프롬프트에 예시를 직접 포함해도 되지만 `<br>`예시를 선택적으로 삽입하는 모듈과 함께 쓰면 좋기에 활용성이 괜찮습니다.
+사실, 프롬프트에 예시를 직접 포함해도 되지만 <br>예시를 선택적으로 삽입하는 모듈과 함께 쓰면 좋기에 활용성이 괜찮습니다.
 
 ```python
 example_prompt = PromptTemplate.from_template(
@@ -145,9 +145,9 @@ Answer:
 """
 ```
 
-`prompt`에는  예시들을 예시 프롬프트 템플릿에 각 채워 나열한 후에 `<br>`마지막에 `suffix` 내용을 채워 주게 됩니다.
+`prompt`에는  예시들을 예시 프롬프트 템플릿에 각 채워 나열한 후에 <br>마지막에 `suffix` 내용을 채워 주게 됩니다.
 
-`suffix`에서 `question`은 `input_variables` 내용과 연결이 되는 부분이며,`<br>`사용자 입력(질문)을 넣는 부분입니다.
+`suffix`에서 `question`은 `input_variables` 내용과 연결이 되는 부분이며,<br>사용자 입력(질문)을 넣는 부분입니다.
 
 이렇게 몇가지 예시를 주면, LLM 모델이 답변을 생성할 때 해당 예시를 참고하게 됩니다.
 
@@ -257,7 +257,7 @@ OK.
 >
 > **`SemanticSimilarityExampleSelector`의 `from_examples()` 메서드로 Chroma DB에 `OpenAIEmbeddings()` 임베딩 모델로 예시를 선택하는 객체를 생성할 수 있습니다.**
 >
-> 이후에 그 생성한 **객체의 `select_examples()` 메서드에 딕셔너리 형태의 입력을 넣어주면** `<br>`**예시들 중에서 입력과 유사한 예시 k개를 선택해 줍니다.**
+> 이후에 그 생성한 **객체의 `select_examples()` 메서드에 딕셔너리 형태의 입력을 넣어주면** <br>**예시들 중에서 입력과 유사한 예시 k개를 선택해 줍니다.**
 >
 > 여기서는 **나이를 물어보는 예시를 정확하게 선택**해주고 있습니다.
 
@@ -353,11 +353,11 @@ stream_response(answer)
 
 GPT 선생님이 알려주셨습니다.
 
-`MaxMarginalRelevanceExampleSelector`에서 `<br>λ·sim(query, example) − (1−λ)·max(sim(example, selected))` 식을 보았을 때,
+`MaxMarginalRelevanceExampleSelector`에서 <br>`λ·sim(query, example) − (1−λ)·max(sim(example, selected))` 식을 보았을 때,
 
 ##### `sim(query, example)`, `max(sim(example, selected)`를 이용하고 있고, 그들의 계수가 서로 반비례함을 볼 수 있습니다.
 
-즉, **query와 유사성과 선택된 예시와의 유사성을 동시에 고려한다**는 것입니다.`<br>`**"파라미터 λ가 크다" = "질문과 유사한 것들을 고르지만, 반대로 선택되는 것들 사이에는 유사하지 않도록 한다"**라고 할 수 있습니다.
+즉, **query와 유사성과 선택된 예시와의 유사성을 동시에 고려한다**는 것입니다.<br>**"파라미터 λ가 크다" = "질문과 유사한 것들을 고르지만, 반대로 선택되는 것들 사이에는 유사하지 않도록 한다"**라고 할 수 있습니다.
 
 (‼️ langchain의 MaxMarginalRelevanceExampleSelector는 `lambda_mult` 설정이 되지 않습니다. 직접 커스텀해서 만들어야 한다고 합니다.)
 
@@ -373,7 +373,7 @@ GPT 선생님이 알려주셨습니다.
 2. LLM에게 예시처럼 `instruction`, `input`의 값을 던져주고, `answer` 값을 받아와야 하는데
 3. 그러지 않고 `instruction`만 던져주었을 때 올바른 답변을 해주지 못함
 
-`instruction`, `input`을 함께 고려하여 유사도 계산을 해야하는데 `<br>`그러지 못하여 오류가 난다고 합니다.
+`instruction`, `input`을 함께 고려하여 유사도 계산을 해야하는데<br>그러지 못하여 오류가 난다고 합니다.
 
 &nbsp;
 
@@ -398,7 +398,7 @@ custom_selector.select_examples({"instruction": "다음 문장을 회의록 작�
 """
 ```
 
-원래는 다른 예시(교정 전문가 관련)가 선택됐었는데 `<br>`지금은 정확하게 선택됨을 알 수 있습니다.
+원래는 다른 예시(교정 전문가 관련)가 선택됐었는데 <br>지금은 정확하게 선택됨을 알 수 있습니다.
 
 &nbsp;
 
@@ -421,7 +421,7 @@ prompt
 # 출력: input_variables=['context', 'question'] input_types={} partial_variables={} metadata={'lc_hub_owner': 'rlm', 'lc_hub_repo': 'rag-prompt', 'lc_hub_commit_hash': '50442af133e61576e74536c6556cefe1fac147cad032f4377b60c436e6cdcb6e'} messages=[HumanMessagePromptTemplate(prompt=PromptTemplate(input_variables=['context', 'question'], input_types={}, partial_variables={}, template="You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.\nQuestion: {question} \nContext: {context} \nAnswer:"), additional_kwargs={})]
 ```
 
-이때, 프롬프트는 수정될 수 있으니 프롬프트 버전 해시를 지정해두는 것이 좋습니다.`<br>`버전 해시는 해당 프롬프트에서 commit 부분 들어가면 나와 있습니다.
+이때, 프롬프트는 수정될 수 있으니 프롬프트 버전 해시를 지정해두는 것이 좋습니다.<br>버전 해시는 해당 프롬프트에서 commit 부분 들어가면 나와 있습니다.
 
 ```python
 # 특정 버전의 프롬프트를 가져오기 위해 버전 해시 지정
