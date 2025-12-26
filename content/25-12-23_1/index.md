@@ -39,7 +39,7 @@ Dense Retriever는 텍스트를 고차원 공간의 **밀집 벡터(Dense Vector
 
 ### 대표적인 모델: DPR (Dense Passage Retrieval)
 
-Meta(구 Facebook)에서 제안한 모델로, 두 개의 BERT 모델을 각각 질문용과 문서용 인코더로 학습시켜 성능을 극대화한 방식이 가장 유명합니다.
+메타(구 Facebook !!)에서 제안한 모델로, 두 개의 BERT 모델을 각각 질문용과 문서용 인코더로 학습시켜 성능을 극대화한 방식이 가장 유명합니다.
 
 ### 한계와 보완 (Hybrid Search)
 
@@ -120,32 +120,32 @@ LangChain Document 객체로 변환한 후에,<br>검색어 "**아이폰 15 프�
 
 2. **허깅페이스의 jhgan/ko-sroberta-multitask 모델 - Dense Retriever 예시**
 
-```python
-from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
+   ```python
+   from langchain_community.vectorstores import FAISS
+   from langchain_huggingface import HuggingFaceEmbeddings
+   
+   # 2. Dense Retriever (Vector Store)
+   print("--- [B. Dense Retriever (Vector/FAISS)] ---")
+   # 임베딩 모델 로드 (한국어 성능 좋은 모델)
+   embedding_model = HuggingFaceEmbeddings(model_name="jhgan/ko-sroberta-multitask")
+   
+   # 벡터 저장소(VectorStore) 생성 후 Retriever로 변환
+   vectorstore = FAISS.from_documents(documents, embedding_model)
+   dense_retriever = vectorstore.as_retriever(search_kwargs={"k": 1})
+   
+   # 검색어: "아이폰 15 프로 충전"
+   dense_result = dense_retriever.invoke("아이폰 15 프로 충전")
+   print(f"검색어: '아이폰 15 프로 충전'")
+   print(f"결과: {dense_result[0].page_content}")
+   """출력:
+   --- [B. Dense Retriever (Vector/FAISS)] ---
+   검색어: '아이폰 15 프로 충전'
+   결과: 애플의 새로운 스마트폰은 C타입 충전 단자를 지원합니다.
+   """
+   ```
 
-# 2. Dense Retriever (Vector Store)
-print("--- [B. Dense Retriever (Vector/FAISS)] ---")
-# 임베딩 모델 로드 (한국어 성능 좋은 모델)
-embedding_model = HuggingFaceEmbeddings(model_name="jhgan/ko-sroberta-multitask")
-
-# 벡터 저장소(VectorStore) 생성 후 Retriever로 변환
-vectorstore = FAISS.from_documents(documents, embedding_model)
-dense_retriever = vectorstore.as_retriever(search_kwargs={"k": 1})
-
-# 검색어: "아이폰 15 프로 충전"
-dense_result = dense_retriever.invoke("아이폰 15 프로 충전")
-print(f"검색어: '아이폰 15 프로 충전'")
-print(f"결과: {dense_result[0].page_content}")
-"""출력:
---- [B. Dense Retriever (Vector/FAISS)] ---
-검색어: '아이폰 15 프로 충전'
-결과: 애플의 새로운 스마트폰은 C타입 충전 단자를 지원합니다.
-"""
-```
-
-* **검색어 벡터:** **`아이폰 15 프로 충전`**을 **아이폰 스마트폰의 특정 기종의 충전과 관련한 의미**를 가진 좌표로 변환할 것임
-* **네번째 문서가 첫번째 문서보다 특별하게 `충전`이라는 핵심 의도가 가까우므로 네번째 문서를 가져오게 됩니다.**
+   * **검색어 벡터:** **`아이폰 15 프로 충전`**을 **아이폰 스마트폰의 특정 기종의 충전과 관련한 의미**를 가진 좌표로 변환할 것임
+   * **네번째 문서가 첫번째 문서보다 특별하게 `충전`이라는 핵심 의도가 가까우므로 네번째 문서를 가져오게 됩니다.**
 
 &nbsp;
 
