@@ -113,7 +113,7 @@
 <li><strong>질문-답변 성능 향상:</strong> RAG(검색 증강 생성) 시스템에서 LLM이 답변하기 가장 좋은 문맥을 가져오는 데 탁월합니다.</li>
 </ol>
 <h3 id="대표적인-모델-dpr-dense-passage-retrieval" style="position:relative;"><a href="#%EB%8C%80%ED%91%9C%EC%A0%81%EC%9D%B8-%EB%AA%A8%EB%8D%B8-dpr-dense-passage-retrieval" aria-label="대표적인 모델 dpr dense passage retrieval permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>대표적인 모델: DPR (Dense Passage Retrieval)</h3>
-<p>Meta(구 Facebook)에서 제안한 모델로, 두 개의 BERT 모델을 각각 질문용과 문서용 인코더로 학습시켜 성능을 극대화한 방식이 가장 유명합니다.</p>
+<p>메타(구 Facebook !!)에서 제안한 모델로, 두 개의 BERT 모델을 각각 질문용과 문서용 인코더로 학습시켜 성능을 극대화한 방식이 가장 유명합니다.</p>
 <h3 id="한계와-보완-hybrid-search" style="position:relative;"><a href="#%ED%95%9C%EA%B3%84%EC%99%80-%EB%B3%B4%EC%99%84-hybrid-search" aria-label="한계와 보완 hybrid search permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>한계와 보완 (Hybrid Search)</h3>
 <p>Dense Retriever는 학습 데이터에 없는 특수한 고유명사나 품번(예: “A-1234”) 같은 수치 매칭에는 약할 수 있습니다. 그래서 최근에는 <strong>Sparse와 Dense를 섞은 Hybrid Search</strong> 방식을 실무에서 가장 많이 사용합니다.</p>
 <blockquote>
@@ -187,8 +187,8 @@ sparse_result <span class="token operator">=</span> sparse_retriever<span class=
 </ul>
 <p> </p>
 <ol start="2">
-<li><strong>허깅페이스의 jhgan/ko-sroberta-multitask 모델 - Dense Retriever 예시</strong></li>
-</ol>
+<li>
+<p><strong>허깅페이스의 jhgan/ko-sroberta-multitask 모델 - Dense Retriever 예시</strong></p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> langchain_community<span class="token punctuation">.</span>vectorstores <span class="token keyword">import</span> FAISS
 <span class="token keyword">from</span> langchain_huggingface <span class="token keyword">import</span> HuggingFaceEmbeddings
 
@@ -214,6 +214,8 @@ dense_result <span class="token operator">=</span> dense_retriever<span class="t
 <li><strong>검색어 벡터:</strong> **<code class="language-text">아이폰 15 프로 충전</code>**을 <strong>아이폰 스마트폰의 특정 기종의 충전과 관련한 의미</strong>를 가진 좌표로 변환할 것임</li>
 <li><strong>네번째 문서가 첫번째 문서보다 특별하게 <code class="language-text">충전</code>이라는 핵심 의도가 가까우므로 네번째 문서를 가져오게 됩니다.</strong></li>
 </ul>
+</li>
+</ol>
 <p> </p>
 <p> </p>
 <p>Dense Retriever과 같은 Semantic Retriever은<br>벡터 검색은 “의미”를 너무 중시한 나머지 “정확성”을 놓칠 때가 많습니다.</p>
