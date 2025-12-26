@@ -3,12 +3,14 @@ emoji: ☀️
 title: "[LLM] 테디노트의 RAG 비법노트 끄적끄적-3"
 date: '2025-12-13 00:00:00'
 author: 변우중
-tags: LLM 프롬프트 Prompt RAG OutputParser Parser
+tags: LLM 프롬프트 Prompt RAG OutputParser Parser LangChain 랭체인
 categories: LLM
 ---
 참고 : 테디노트의 RAG 비법노트 (https://fastcampus.co.kr/data_online_teddy)
 
 소스코드: https://github.com/teddylee777/langchain-kr
+
+위키독스: https://wikidocs.net/book/14314
 
 &nbsp;
 

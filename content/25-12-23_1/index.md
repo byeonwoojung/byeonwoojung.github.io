@@ -3,7 +3,7 @@ emoji: ☀️
 title: "Dense Retriever와 Sparse Retriever"
 date: '2025-12-23 00:00:00'
 author: 변우중
-tags: LLM 프롬프트 RAG Retriever
+tags: LLM 프롬프트 RAG Retriever LangChain 랭체인
 categories: LLM RAG
 ---
 오늘은 Dense Retriever와 Sparse Retriever에 대해 정리해보고자 합니다.

@@ -3,12 +3,14 @@ emoji: ☀️
 title: "[LLM] 테디노트의 RAG 비법노트 끄적끄적-8"
 date: '2025-12-25 00:00:00'
 author: 변우중
-tags: LLM 프롬프트 RAG Ollama 허깅페이스
+tags: LLM 프롬프트 RAG Ollama 허깅페이스 LangChain 랭체인
 categories: LLM
 ---
 참고 : 테디노트의 RAG 비법노트 (https://fastcampus.co.kr/data_online_teddy)
 
 소스코드: https://github.com/teddylee777/langchain-kr
+
+위키독스: https://wikidocs.net/book/14314
 
 &nbsp;
 
@@ -187,7 +189,7 @@ GPU를 잘 활용하고 있는지 보고 싶다면<br>코드가 스트리밍 중
 
 &nbsp;
 
-오늘은 여기까지 작성하는데,`<br>`Ollama 외에도 GPT4ALL 모델을 이용하여 LLM 모델을 로드하여 사용할 수 있습니다.(프로그램과 라이브러리 모두 존재함) 취향껏 써보면 될 듯 합니다.
+오늘은 여기까지 작성하는데,<br>Ollama 외에도 GPT4ALL 모델을 이용하여 LLM 모델을 로드하여 사용할 수 있습니다.(프로그램과 라이브러리 모두 존재함) 취향껏 써보면 될 듯 합니다.
 
 끄읕.
 

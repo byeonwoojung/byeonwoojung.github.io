@@ -3,12 +3,14 @@ emoji: ☀️
 title: "[LLM] 테디노트의 RAG 비법노트 끄적끄적-2"
 date: '2025-12-12 00:00:00'
 author: 변우중
-tags: LLM 프롬프트 Prompt RAG LCEL
+tags: LLM 프롬프트 Prompt RAG LCEL LangChain 랭체인
 categories: LLM
 ---
 참고 : 테디노트의 RAG 비법노트 (https://fastcampus.co.kr/data_online_teddy)
 
 소스코드: https://github.com/teddylee777/langchain-kr
+
+위키독스: https://wikidocs.net/book/14314
 
 &nbsp;
 
@@ -23,8 +25,8 @@ categories: LLM
 
 ---
 
-지난 글에서는 invoke(), stream() 메서드를 살펴봤는데
-사실 batch() 메서드도 있다.
+지난 글에서는 `invoke()`, `stream()` 메서드를 살펴봤는데
+사실 `batch()` 메서드도 있다.
 
 #### batch(): 배치 처리
 
