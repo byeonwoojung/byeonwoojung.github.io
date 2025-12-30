@@ -291,6 +291,76 @@ memory.load_memory_variables({})["history"]
 
 &nbsp;
 
+## VectorStoreRetrieverMemory: 유사성 있는 대화에 접근
+
+---
+
+
+
+```python
+import faiss
+from langchain_openai import OpenAIEmbeddings
+from langchain_classic.docstore import InMemoryDocstore
+from langchain_classic.vectorstores import FAISS
+from langchain_classic.memory import VectorStoreRetrieverMemory
+
+
+# 임베딩 모델 정의
+embeddings_model = OpenAIEmbeddings()
+
+# Vector Store 초기화
+embedding_size = 1536
+index = faiss.IndexFlatL2(embedding_size)  # FAISS 인덱스를 초기화합니다.
+vectorstore = FAISS(embeddings_model, index, InMemoryDocstore({}), {})  # Vector Store를 초기화합니다.
+
+retriever = vectorstore.as_retriever(search_kwargs={"k": 1})  # k=1은 가장 관련성 있는 문서만 반환
+memory = VectorStoreRetrieverMemory(retriever=retriever)      # retriever를 사용하여 메모리 생성
+
+
+memory.save_context(
+    inputs={
+        "human": "안녕하세요, 오늘 면접에 참석해주셔서 감사합니다. 자기소개 부탁드립니다."
+    },
+    outputs={
+        "ai": "안녕하세요. 저는 컴퓨터 과학을 전공한 신입 개발자입니다. 대학에서는 주로 자바와 파이썬을 사용했으며, 최근에는 웹 개발 프로젝트에 참여하여 실제 사용자를 위한 서비스를 개발하는 경험을 했습니다."
+    },
+)
+```
+
+이렇게 **임베딩 모델을 생성**하고 **FAISS 인덱스를 초기화**한 후에<br>**`langchain_classic`의 `docstore`에서 `InMemoryDocstore` 모듈(문서를 메모리에 저장하는 저장소)을 이용해 `vectorstore`를 초기화**합니다.
+
+**`vectorstore`의 `as_retriever` 메서드를 이용해 리트리버를 생성**하고<br>**`VectorStoreRetrieverMemory`에 해당 리트리버를 설정해주어 메모리를 생성**합니다.
+
+**대화를 저장한 후에, `load_memory_variables()` 메서드에 `{role 부분: 질문}`를 전달하고 `["history"]` 값을 꺼내면 이전 대화들의 가장 유사한 대화를 출력하게 됩니다.**
+
+```python
+print(
+    memory.load_memory_variables(
+        {"human": "면접자가 프로젝트에서 맡은 역할은 무엇인가요?"}
+    )["history"]
+)
+"""출력:
+human: 프로젝트에서 어떤 역할을 맡았나요?
+ai: 제가 맡은 역할은 백엔드 개발자였습니다. 사용자 데이터 처리와 서버 로직 개발을 담당했으며, RESTful API를 구현하여 프론트엔드와의 통신을 담당했습니다. 또한, 데이터베이스 설계에도 참여했습니다.
+"""
+```
+
+&nbsp;
+
+좀 복잡하지만 아래의 단계를 기억합시다.
+
+1. 임베딩 모델 생성
+2. FAISS 인덱스 초기화
+3. 임베딩 모델, 인덱스, 메모리 방식, 문서 저장소를 이용해 `vectorstore` 초기화
+4. `vectorstore`의 리트리버 생성
+5. 리트리버 이용해 `VectorStoreRetrieverMemory` 메모리 생성
+6. 메모리에 대화 저장(대화 시작)
+7. 메모리의 `load_memory_variables()` 메서드에서 유사한 대화를 찾기 위한 질문을 넣어 호출 (`history` 값 확인)
+
+&nbsp;
+
+&nbsp;
+
 이외에도 많은 메모리 저장하는 방식은 많은데<br>기회가 될 때 추가로 정리해보겠습니다.
 
 끄읕.
