@@ -6,11 +6,7 @@ author: 변우중
 tags: NLP 자연어 자연어처리 토큰화 LLM 프롬프트 RAG 토큰화 LangChain 랭체인
 categories: NLP LLM
 ---
-참고 : 테디노트의 RAG 비법노트 (https://fastcampus.co.kr/data_online_teddy)
-
-소스코드: https://github.com/teddylee777/langchain-kr
-
-위키독스: https://wikidocs.net/book/14314
+참고 : 테디노트의 RAG 비법노트 (https://fastcampus.co.kr/data_online_teddy)<br>소스코드: https://github.com/teddylee777/langchain-kr<br>위키독스: https://wikidocs.net/book/14314
 
 &nbsp;
 

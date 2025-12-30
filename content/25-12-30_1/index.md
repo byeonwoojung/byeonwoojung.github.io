@@ -3,14 +3,10 @@ emoji: ☀️
 title: "[LLM] 테디노트의 RAG 비법노트 끄적끄적-9"
 date: '2025-12-30 00:00:00'
 author: 변우중
-tags: LLM 프롬프트 RAG LangChain 랭체인
+tags: LLM 프롬프트 RAG LangChain 랭체인 memory 메모리
 categories: LLM RAG
 ---
-참고 : 테디노트의 RAG 비법노트 (https://fastcampus.co.kr/data_online_teddy)
-
-소스코드: https://github.com/teddylee777/langchain-kr
-
-위키독스: https://wikidocs.net/book/14314
+참고 : 테디노트의 RAG 비법노트 (https://fastcampus.co.kr/data_online_teddy)<br>소스코드: https://github.com/teddylee777/langchain-kr<br>위키독스: https://wikidocs.net/book/14314
 
 &nbsp;
 
