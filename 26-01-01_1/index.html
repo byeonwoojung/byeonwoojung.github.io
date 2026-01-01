@@ -131,17 +131,16 @@ split_docs <span class="token operator">=</span> loader<span class="token punctu
 <h2 id="청킹-chunking" style="position:relative;"><a href="#%EC%B2%AD%ED%82%B9-chunking" aria-label="청킹 chunking permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>청킹 (Chunking)</h2>
 <hr>
 <p>RAG에서 텍스트를 청킹하는 것은 중요합니다. 아. 청킹은 문서 내용을 chunk(뭉치?) 단위로 묶는 것이라 생각하면 됩니다.</p>
+<p> </p>
 <h3 id="1-청킹을-하는-이유" style="position:relative;"><a href="#1-%EC%B2%AD%ED%82%B9%EC%9D%84-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0" aria-label="1 청킹을 하는 이유 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 청킹을 하는 이유</h3>
 <ul>
-<li><strong>답변 품질·정확성 향상</strong>
-문서를 적절한 길이로 나누면 질문과의 <strong>유사도 계산이 정확해짐</strong>.
-청크가 너무 길면 핵심 정보가 희석돼 유사도가 낮게 나올 수 있음.</li>
-<li><strong>효율성 향상</strong>
+<li><strong>답변 품질·정확성 향상</strong><br>
+문서를 적절한 길이로 나누면 질문과의 <strong>유사도 계산이 정확해집니다.</strong><br>(청크가 너무 길면 핵심 정보가 희석돼 유사도가 낮게 나올 수 있음)</li>
+<li><strong>효율성 향상</strong><br>
 모델의 <strong>최대 토큰 제한</strong>을 넘지 않게 하고,
-<strong>비용 절감 + 불필요한 문맥 감소로 할루시네이션 위험 완화</strong>.</li>
+<strong>비용 절감 + 불필요한 문맥 감소로 할루시네이션 위험 완화</strong> 가능합니다.</li>
 </ul>
-<p>문서 내용이 길다면 청킹은 반드시 필수겠죠.</p>
-<p>가장 유명한 청킹 방식은 Recursive Character 기반 Chunking, Sentence 기반 Chunking, Semantic Chunking 등이 있습니다.</p>
+<p>문서 내용이 길다면 청킹은 반드시 필수겠죠.<br>가장 유명한 청킹 방식은 Recursive Character, Sentence, Semantic Chunking 등이 있습니다.</p>
 <p>우선 Recursive Character 기반 chunking을 손쉽게 눈으로 확인할 수 있는 사이트를 가져와봤습니다.</p>
 <p><a href="https://chunkviz.up.railway.app/">chunkviz</a></p>
 <span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; ">
@@ -174,8 +173,9 @@ split_docs <span class="token operator">=</span> loader<span class="token punctu
 </ol>
 <p>OK!!! 이해 완.</p>
 </blockquote>
+<p> </p>
 <p>결국,</p>
-<p>⭐️ <strong>분할</strong>과 <strong>토큰 계산 방식</strong> 2가지만 기억하고 있으면 됩니다. ⭐️<br>(당연히 <strong>Text splitter만으로 분할하고 청크 사이즈 계산할 수도 있습니다</strong>!!!)</p>
+<p><strong>분할</strong>과 <strong>토큰 계산 방식</strong> 2가지만 기억하고 있으면 됩니다. ⭐️<br>(당연히 <strong>Text splitter만으로 분할하고 청크 사이즈 계산할 수도 있습니다</strong>!!!)</p>
 <p> </p>
 <p> </p>
 <h2 id="텍스트-분할기와-토크나이저" style="position:relative;"><a href="#%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%B6%84%ED%95%A0%EA%B8%B0%EC%99%80-%ED%86%A0%ED%81%AC%EB%82%98%EC%9D%B4%EC%A0%80" aria-label="텍스트 분할기와 토크나이저 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>텍스트 분할기와 토크나이저</h2>
@@ -193,7 +193,7 @@ split_docs <span class="token operator">=</span> loader<span class="token punctu
 <ul>
 <li><strong>동작 원리 (Algorithm):</strong>
 <ul>
-<li>**사용자가 지정한 구분자 리스트(기본값: <code class="language-text">["\n\n", "\n", " ", ""]</code>)**의 순서대로 분할을 시도합니다.</li>
+<li><strong>사용자가 지정한 구분자 리스트(기본값: <code class="language-text">["\n\n", "\n", " ", ""]</code>)</strong>의 순서대로 분할을 시도합니다.</li>
 <li><strong>재귀적 접근:</strong> 가장 큰 단위(<code class="language-text">\n\n</code>: 문단)로 먼저 잘라보고, 청크 크기(Chunk Size)를 초과하면 그 다음 단위(<code class="language-text">\n</code>: 줄바꿈)로 내려가고, 그래도 크면 단어(<code class="language-text"> </code>), 문자 순으로 쪼갭니다.</li>
 <li><strong>특이 사항 (Edge Case):</strong> 일반적으로 설정한 <code class="language-text">chunk_size</code>를 준수하지만, <strong>절대적인 강제 사항은 아닙니다.</strong> 예를 들어, 구분자가 없는 매우 긴 문자열(예: 긴 URL, 띄어쓰기 없는 텍스트)이 들어오면 설정된 크기를 초과하더라도 자르지 않고 하나의 청크로 유지하는 경우가 발생할 수 있습니다.</li>
 </ul>
@@ -248,7 +248,7 @@ split_texts <span class="token operator">=</span> text_splitter<span class="toke
 <p>LLM은 텍스트를 문자가 아닌 <strong>토큰(Token)</strong> 단위로 처리합니다. 따라서 LLM의 Context Window(입력 제한)를 효율적으로 관리하기 위해서는 토큰 기준 분할이 필수적입니다.</p>
 <ul>
 <li>
-<p>⭐️ <strong>동작 방식:</strong></p>
+<p><strong>동작 방식:</strong> ⭐️</p>
 <ol>
 <li>입력된 텍스트를 지정된 Tokenizer를 사용해 토큰(정수 ID)으로 변환합니다.</li>
 <li>설정된 <code class="language-text">chunk_size</code> (토큰 개수) 만큼 자릅니다.</li>
@@ -256,7 +256,7 @@ split_texts <span class="token operator">=</span> text_splitter<span class="toke
 </ol>
 </li>
 <li>
-<p>⭐️ <strong>역할 구분:</strong> 분할을 수행하는 주체는 <code class="language-text">TextSplitter</code> 객체이며, 내부의 <code class="language-text">Tokenizer</code>는 오직 **“길이 계산(Counting)“**과 <strong>“인코딩/디코딩”</strong> 역할만 수행합니다.</p>
+<p><strong>역할 구분:</strong> 분할을 수행하는 주체는 <code class="language-text">TextSplitter</code> 객체이며, 내부의 <code class="language-text">Tokenizer</code>는 오직 **길이 계산(Counting)**과 <strong>인코딩/디코딩</strong> 역할만 수행합니다. ⭐️</p>
 </li>
 <li>
 <p><strong>주의사항:</strong> 토큰 단위로 강제로 자르기 때문에, 단어 중간이나 문장 중간에서 끊길 수 있어 <code class="language-text">RecursiveCharacterTextSplitter.from_tiktoken_encoder</code>와 같이 <strong>구조적 분할과 토큰 계산을 결합</strong>하여 사용하는 것이 일반적입니다.</p>
@@ -281,7 +281,7 @@ texts <span class="token operator">=</span> text_splitter<span class="token punc
 <h3 id="3-토크나이저tokenizer-상세-분류-및-통합-전략-️" style="position:relative;"><a href="#3-%ED%86%A0%ED%81%AC%EB%82%98%EC%9D%B4%EC%A0%80tokenizer-%EC%83%81%EC%84%B8-%EB%B6%84%EB%A5%98-%EB%B0%8F-%ED%86%B5%ED%95%A9-%EC%A0%84%EB%9E%B5-%EF%B8%8F" aria-label="3 토크나이저tokenizer 상세 분류 및 통합 전략 ️ permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 토크나이저(Tokenizer) 상세 분류 및 통합 전략 ⭐️</h3>
 <p>어떤 모델을 쓰느냐에 따라 토큰 계산 방식이 다르므로, 적절한 토크나이저를 선택해야 합니다.</p>
 <h4 id="tiktoken-openai-계열" style="position:relative;"><a href="#tiktoken-openai-%EA%B3%84%EC%97%B4" aria-label="tiktoken openai 계열 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>tiktoken (OpenAI 계열)</h4>
-<p>OpenAI 모델을 사용한다면 사실상 **표준(Standard)**입니다.</p>
+<p>OpenAI 모델을 사용한다면 사실상 <strong>표준(Standard)</strong>입니다.</p>
 <ul>
 <li>
 <p><strong>연결 방식:</strong> <code class="language-text">from_tiktoken_encoder()</code> 메서드를 통해 <code class="language-text">RecursiveCharacterTextSplitter</code> 등과 결합하여 사용합니다.</p>
@@ -316,27 +316,27 @@ texts <span class="token operator">=</span> text_splitter<span class="token punc
 <h4 id="huggingface-tokenizer-오픈소스-llm-계열" style="position:relative;"><a href="#huggingface-tokenizer-%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-llm-%EA%B3%84%EC%97%B4" aria-label="huggingface tokenizer 오픈소스 llm 계열 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HuggingFace Tokenizer (오픈소스 LLM 계열)</h4>
 <p>Llama, Mistral 등 오픈소스 모델을 로컬이나 별도 서버에 호스팅 할 때 필수적입니다.</p>
 <ul>
-<li>⭐️ <strong>연결 방식:</strong> <code class="language-text">from_huggingface_tokenizer()</code> 메서드에 <code class="language-text">AutoTokenizer</code> 객체 등을 넘겨서 사용합니다.</li>
-<li><strong>대표 클래스:</strong> <code class="language-text">GPT2TokenizerFast</code>, <code class="language-text">LlamaTokenizer</code>, <code class="language-text">LlamaTokenizerFast</code>, <code class="language-text">AutoTokenizer</code> emd</li>
+<li><strong>연결 방식:</strong> <strong><code class="language-text">from_huggingface_tokenizer()</code> 메서드에 <code class="language-text">AutoTokenizer</code> 객체 등을 넘겨서 사용합니다.</strong></li>
+<li><strong>대표 클래스:</strong> <code class="language-text">GPT2TokenizerFast</code>, <code class="language-text">LlamaTokenizer</code>, <code class="language-text">LlamaTokenizerFast</code>, <code class="language-text">AutoTokenizer</code> 등</li>
 <li><strong>대상 모델:</strong> LLaMA 2/3, Mistral, Qwen, Gemma, Solar 등 대부분의 오픈소스 LLM</li>
 <li><strong>핵심 특징:</strong>
 <ul>
-<li>⭐️ <strong>Fast Tokenizer:</strong> 대부분 Rust 기반으로 작성된 ‘Fast’ 버전을 지원하여 속도가 매우 빠릅니다.</li>
+<li><strong>Fast Tokenizer:</strong> 대부분 Rust 기반으로 작성된 ‘Fast’ 버전을 지원하여 속도가 매우 빠릅니다. ⭐️</li>
 <li><strong>유연성:</strong> BPE, SentencePiece, Unigram 등 다양한 토큰화 알고리즘을 모델에 맞춰 자동으로 적용합니다(<code class="language-text">AutoTokenizer</code> 사용 시).</li>
 </ul>
 </li>
-<li>⭐️ <strong>주의 :</strong> 모델마다 사용하는 어휘 사전(Vocab)이 다르므로, 반드시 <strong>사용하려는 LLM 모델과 동일한 토크나이저</strong>를 로드해야 정확한 토큰 수를 맞출 수 있습니다.</li>
+<li><strong>주의 :</strong> 모델마다 사용하는 어휘 사전(Vocab)이 다르므로, 반드시 <strong>사용하려는 LLM 모델과 동일한 토크나이저</strong>를 로드해야 정확한 토큰 수를 맞출 수 있습니다. ⭐️</li>
 </ul>
 <p> </p>
 <h4 id="sentence-transformer-임베딩-특화" style="position:relative;"><a href="#sentence-transformer-%EC%9E%84%EB%B2%A0%EB%94%A9-%ED%8A%B9%ED%99%94" aria-label="sentence transformer 임베딩 특화 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sentence Transformer (임베딩 특화)</h4>
 <ul>
 <li><strong>연결 방식:</strong> <code class="language-text">SentenceTransformersTokenTextSplitter</code></li>
-<li><strong>특징:</strong> LLM의 입력 제한보다는, **임베딩 모델(Embedding Model)의 입력 한계(Max Sequence Length)**를 맞추기 위해 사용합니다. (예: BERT 계열은 보통 512 토큰 제한)</li>
+<li><strong>특징:</strong> LLM의 입력 제한보다는, <strong>임베딩 모델(Embedding Model)의 입력 한계(Max Sequence Length)</strong>를 맞추기 위해 사용합니다. (예: BERT 계열은 보통 512 토큰 제한)</li>
 <li><strong>주의:</strong> 생성용 LLM(예: GPT-4)과 토크나이저가 다르므로, 여기서 계산한 토큰 수가 LLM 입력 토큰 수와 일치하지 않습니다. 주로 <strong>Semantic Chunking</strong>이나 임베딩 벡터 생성 전처리 단계에서 사용됩니다.</li>
 </ul>
 <p> </p>
 <h4 id="언어학적규칙-기반-토크나이저-linguisticrule-based" style="position:relative;"><a href="#%EC%96%B8%EC%96%B4%ED%95%99%EC%A0%81%EA%B7%9C%EC%B9%99-%EA%B8%B0%EB%B0%98-%ED%86%A0%ED%81%AC%EB%82%98%EC%9D%B4%EC%A0%80-linguisticrule-based" aria-label="언어학적규칙 기반 토크나이저 linguisticrule based permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>언어학적/규칙 기반 토크나이저 (Linguistic/Rule-based)</h4>
-<p>토큰 개수보다는 **“문장의 의미적 완결성”**을 중시할 때 사용합니다.</p>
+<p>토큰 개수보다는 <strong>문장의 의미적 완결성</strong>을 중시할 때 사용합니다.</p>
 <p>(코드는 이전과 비슷한 방식으로 진행하면 됩니다.)</p>
 <ul>
 <li><strong>spaCy (<code class="language-text">SpacyTextSplitter</code>)</strong>
@@ -355,10 +355,10 @@ texts <span class="token operator">=</span> text_splitter<span class="token punc
 <ul>
 <li><strong>특징:</strong> 한국어의 특성(교착어)을 반영하여 형태소 단위로 분석합니다. 한국어의 의미적 단위를 보존하는 데 유리합니다.</li>
 <li><strong>주의 (Trade-off):</strong>
-<ol>
+<ul>
 <li><strong>속도:</strong> Tiktoken이나 HuggingFace Fast Tokenizer에 비해 분석 속도가 현저히 느립니다.</li>
 <li><strong>불일치:</strong> 형태소 개수와 LLM의 토큰 개수는 다릅니다. 따라서 이를 기준으로 자른 뒤, LLM에 넣을 때는 토큰 초과 여부를 다시 확인해야 할 수도 있습니다.</li>
-</ol>
+</ul>
 </li>
 </ul>
 </li>
@@ -367,8 +367,8 @@ texts <span class="token operator">=</span> text_splitter<span class="token punc
 <p> </p>
 <h2 id="시맨틱-청킹-semantic-chunking" style="position:relative;"><a href="#%EC%8B%9C%EB%A7%A8%ED%8B%B1-%EC%B2%AD%ED%82%B9-semantic-chunking" aria-label="시맨틱 청킹 semantic chunking permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>시맨틱 청킹 (Semantic Chunking)</h2>
 <hr>
-<p><code class="language-text">Semantic Chunking</code> 방법은 별도로 정리하고자 합니다.</p>
-<p><strong><code class="language-text">Semantic Chunking</code>은 앞 뒤 문장의 시맨틱 거리(Semantic Distance)를 계산하여 특정 임계치(<code class="language-text">breakpoint_threshold_type</code>, <code class="language-text">breakpoint_threshold_amount</code>)를 넘지 않을 때까지 한 청크로 묶는 방법입니다.</strong></p>
+<p><strong><code class="language-text">Semantic Chunking</code></strong> 방법은 별도로 정리하고자 합니다.</p>
+<p><strong><code class="language-text">Semantic Chunking</code>은 앞뒤 문장의 시맨틱 거리(Semantic Distance)를 계산하여 특정 임계치(<code class="language-text">breakpoint_threshold_type</code>, <code class="language-text">breakpoint_threshold_amount</code>)를 넘지 않을 때까지 한 청크로 묶는 방법입니다.</strong></p>
 <p>즉, <strong>연속된 유사한 문장들을 묶어주는 방법</strong>이라고 할 수 있습니다.</p>
 <p>바로 코드로 보자면</p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">from</span> langchain_experimental<span class="token punctuation">.</span>text_splitter <span class="token keyword">import</span> SemanticChunker
@@ -398,7 +398,7 @@ docs <span class="token operator">=</span> text_splitter<span class="token punct
 <li><code class="language-text">standard_deviation</code>: 표준편차</li>
 <li><code class="language-text">interquartile</code>: 사분위수 범위(IQR)
 <ul>
-<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>임계값</mtext><mo stretchy="false">(</mo><mi>T</mi><mi>h</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>h</mi><mi>o</mi><mi>l</mi><mi>d</mi><mo stretchy="false">)</mo><mo>=</mo><mtext>Mean(평균)</mtext><mo>+</mo><mo stretchy="false">(</mo><mtext>amount</mtext><mo>×</mo><mtext>IQR</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">임계값(Threshold) = \text{Mean(평균)} + (\text{amount} \times \text{IQR})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord hangul_fallback">임계값</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">h</span><span class="mord mathnormal">res</span><span class="mord mathnormal">h</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">d</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Mean(</span><span class="mord hangul_fallback">평균</span><span class="mord">)</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">amount</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">IQR</span></span><span class="mclose">)</span></span></span></span></span><br>값이 <code class="language-text">breakpoint_threshold_amount</code>을 넘지 않는 곳까지 청크를 나눕니다.</li>
+<li><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>임계값</mtext><mo stretchy="false">(</mo><mi>T</mi><mi>h</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>h</mi><mi>o</mi><mi>l</mi><mi>d</mi><mo stretchy="false">)</mo><mo>=</mo><mtext>Mean(평균)</mtext><mo>+</mo><mo stretchy="false">(</mo><mtext>amount</mtext><mo>×</mo><mtext>IQR</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">임계값(Threshold) = \text{Mean(평균)} + (\text{amount} \times \text{IQR})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord hangul_fallback">임계값</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">h</span><span class="mord mathnormal">res</span><span class="mord mathnormal">h</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">d</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Mean(</span><span class="mord hangul_fallback">평균</span><span class="mord">)</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">amount</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">IQR</span></span><span class="mclose">)</span></span></span></span></span> 값이 <code class="language-text">breakpoint_threshold_amount</code>을 넘지 않는 곳까지 청크를 나눕니다.</li>
 <li>평균과 IQR은 현재 문장의 이전 문장간의 시맨틱 거리를 구한 값들에서 구합니다.</li>
 </ul>
 </li>
@@ -408,8 +408,8 @@ docs <span class="token operator">=</span> text_splitter<span class="token punct
 <li>
 <p><strong><code class="language-text">breakpoint_threshold_amount</code>: 그 기준의 임계치 ⭐️</strong></p>
 <ul>
-<li><strong>임계치가 높을수록, 시맨틱 거리가 먼 것(의미적 유사성이 덜한 것)도 한 청크로 묶이므로 청크 개수가 적어진다.</strong> ⭐️</li>
-<li><strong>임계치가 낮을수록, 시맨틱 거리가 짧은 것(의미적 유사성이 깊은 것)들끼리 청크로 묶이므로 청크 개수가 많아진다.</strong> ⭐️</li>
+<li><strong>임계치가 높을수록<br>시맨틱 거리가 먼 것(의미적 유사성이 덜한 것)도 한 청크로 묶이므로 청크 개수가 적어진다.</strong> ⭐️</li>
+<li><strong>임계치가 낮을수록<br>시맨틱 거리가 짧은 것(의미적 유사성이 깊은 것)들끼리 청크로 묶이므로 청크 개수가 많아진다.</strong> ⭐️</li>
 </ul>
 </li>
 <li>
@@ -426,7 +426,7 @@ docs <span class="token operator">=</span> text_splitter<span class="token punct
 <li><code class="language-text">x</code>축은 에세이의 첫 문장부터 마지막 문장까지 순서대로 나열한 것입니다.</li>
 <li><code class="language-text">y</code>축은 <strong>현재 문장의 바로 이전 문장과의 시맨틱 거리</strong>(코사인 거리)입니다.<br>(<strong>거리가 높다는 것은 의미적 유사도가 낮다</strong>(즉, 주제가 급격히 바뀌었다)는 뜻입니다.)</li>
 <li><strong>빨간 줄(임계치)를 위로 넘는 부분에서 시맨틱 거리의 백분위수 95를 넘는 곳</strong>입니다. 그림에서 확인할 수 있듯이, <strong>빨간 줄 위로 넘는 부분들에 대해 그 이전 백분위수 95를 넘는 곳에서 해당 부분까지 Chunk가 형성되는 것</strong>입니다.</li>
-<li>결국, <strong>순서대로 나열된 문장들이 이전 문장과의 시맨틱 거리(코사인 거리)의 <code class="language-text">percentile</code>이 95가 넘을 때 Chunk를 끊는 형태</strong>입니다.</li>
+<li>결국, <strong>순서대로 나열된 문장들이 이전 문장과의 시맨틱 거리(코사인 거리)의 <code class="language-text">percentile</code>이 95가 넘을 때 Chunk를 끊는 형태</strong>입니다. ⭐️</li>
 <li>당연히 <strong>청크별 길이가 크게 차이가 날 수 있습니다.</strong></li>
 </ul>
 </li>
@@ -508,7 +508,7 @@ python_docs</code></pre></div>
 <p><strong>재귀적 분할 (Recursive) 방식</strong>으로 JSON을 분할합니다.</p>
 <ol>
 <li>전체 JSON 객체를 봅니다.</li>
-<li>설정된 크기(<code class="language-text">max_chunk_size</code>)보다 크면, 내부의 **키(Key)**나 <strong>리스트(List)의 요소</strong> 단위로 더 깊이 들어가서 쪼갭니다. (깊이우선탐색 DFS 알고리즘과 같은 방식입니다.)</li>
+<li>설정된 크기(<code class="language-text">max_chunk_size</code>)보다 크면, 내부의 <strong>키(Key)</strong>나 <strong>리스트(List)의 요소</strong> 단위로 더 깊이 들어가서 쪼갭니다. (깊이우선탐색 DFS 알고리즘과 같은 방식입니다.)</li>
 <li>이 과정을 반복하여 각 조각이 제한 크기 안에 들어오도록 만듭니다.</li>
 </ol>
 <p> </p>

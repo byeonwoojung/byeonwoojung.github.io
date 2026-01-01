@@ -151,7 +151,7 @@ json\n{\n  "person": "김철수",\n  "email": "chulsoo.kim@bikecorporation.me",\
 <p><strong>Chain에 parser을 연결하는 것은 LLM의 응답결과를 받은 ‘후처리’ 방식이기 때문에 안정적인 파싱이 불가</strong>할 수 있습니다.</p>
 <p> </p>
 <p>하지만,</p>
-<p>⭐️ <strong>LLM의 <code class="language-text">.with_structured_output()</code> 메서드를 이용하면 애초에 LLM에게 구조화된 응답받을 수 있도록 할 수 있습니다.</strong> ⭐️</p>
+<p><strong>LLM의 <code class="language-text">.with_structured_output()</code> 메서드를 이용하면<br>애초에 LLM에게 구조화된 응답받을 수 있도록 할 수 있습니다.</strong> ⭐️</p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python">llm_with_structered <span class="token operator">=</span> ChatOpenAI<span class="token punctuation">(</span>
     temperature<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> model_name<span class="token operator">=</span><span class="token string">"gpt-4.1-mini"</span>
 <span class="token punctuation">)</span><span class="token punctuation">.</span>with_structured_output<span class="token punctuation">(</span>EmailSummary<span class="token punctuation">)</span>
@@ -161,9 +161,8 @@ answer
 <span class="token triple-quoted-string string">"""출력:
 EmailSummary(person='김철수', email='chulsoo.kim@bikecorporation.me', subject='"ZENESIS" 자전거 유통 협력 및 미팅 일정 제안', summary='바이크코퍼레이션의 김철수 상무가 이은채 대리에게 ZENESIS 자전거에 대한 상세 브로슈어 요청과 함께, 기술 사양, 배터리 성능, 디자인 정보가 필요하다고 전달했습니다. 또한, 1월 15일 화요일 오전 10시에 미팅을 제안하며 협력 가능성을 논의하고자 합니다.', date='2024-01-08')
 """</span></code></pre></div>
-<p>이처럼</p>
-<p>LLM을 <code class="language-text">with_structured_output()</code> 메서드를 붙여 생성하고 invoke() 메서드를 호출하면</p>
-<p><strong>LLM 응답 형식 <code class="language-text">AIMessage</code>가 아닌,<br>여기서 Pydantic 객체인 EmailSummary 객체로 응답이 나오는 것을 볼 수 있습니다.</strong></p>
+<p>이처럼 LLM을 <code class="language-text">with_structured_output()</code> 메서드를 붙여 생성하고 <code class="language-text">invoke()</code>를 호출하면</p>
+<p><strong>LLM 응답 형식 <code class="language-text">AIMessage</code>가 아닌<br>여기서 Pydantic 객체인 EmailSummary 객체로 응답이 나오는 것을 볼 수 있습니다.</strong></p>
 <p> </p>
 <p>⚠️ <strong>알아두어야 할 점</strong></p>
 <ol>

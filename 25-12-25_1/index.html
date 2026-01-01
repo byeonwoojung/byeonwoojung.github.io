@@ -91,7 +91,7 @@
 <li>
 <p><strong>Device 처리 특징:</strong></p>
 <ul>
-<li>⭐️ <strong><code class="language-text">device</code> 인자로 문자열(<code class="language-text">"cpu"</code>, <code class="language-text">"cuda"</code>, <code class="language-text">"mps"</code>)과 정수(GPU ID)를 모두 지원합니다.</strong> ⭐️</li>
+<li>⭐️ <strong><code class="language-text">device</code> 인자로 문자열(<code class="language-text">"cpu"</code>, <code class="language-text">"cuda"</code>, <code class="language-text">"mps"</code>)과 정수(GPU ID)를 모두 지원합니다.</strong></li>
 </ul>
 </li>
 </ul>
@@ -111,7 +111,7 @@
 <li>
 <p><strong>Device 처리 특징:</strong></p>
 <ul>
-<li>사용자의 편의를 위해 <code class="language-text">device</code> 파라미터를 주로 정수형(Integer)으로 입력받도록 설계되었습니다. (예: <code class="language-text">-1</code>은 CPU, ⭐️ <strong><code class="language-text">0</code>은 첫 번째 CUDA GPU</strong> ⭐️)</li>
+<li>사용자의 편의를 위해 <strong><code class="language-text">device</code></strong> 파라미터를 주로 정수형(Integer)으로 입력받도록 설계되었습니다. (예: -1은 CPU, ⭐️ <strong>0은 첫 번째 CUDA GPU</strong> ⭐️)</li>
 <li>이 과정에서 **유효성 검사 로직(Validation Logic)**이 포함되는데, 이 로직이 NVIDIA GPU(CUDA)를 기준으로 작성되어 있어 Mac(MPS) 환경과 호환성 충돌을 일으킬 수 있습니다.</li>
 </ul>
 </li>
