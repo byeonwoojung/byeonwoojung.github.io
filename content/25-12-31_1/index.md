@@ -4,7 +4,7 @@ title: "[LLM] 테디노트의 RAG 비법노트 끄적끄적-10"
 date: '2025-12-31 00:00:00'
 author: 변우중
 tags: LLM 프롬프트 RAG LangChain 랭체인
-categories: LLM RAG
+categories: LLM
 ---
 참고 : 테디노트의 RAG 비법노트 (https://fastcampus.co.kr/data_online_teddy)<br>소스코드: https://github.com/teddylee777/langchain-kr<br>위키독스: https://wikidocs.net/book/14314
 
