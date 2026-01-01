@@ -528,7 +528,7 @@ docs = splitter.create_documents(texts=[json_data])
 texts = splitter.split_text(json_data=json_data)
 
 # JSON -> Document 분할 + ⭐️리스트 변형하여 분할⭐️
-docs = splitter.create_documents(texts=[json_data], convert_list=True)
+docs = splitter.create_documents(texts=[json_data], convert_lists=True)
 ```
 
 * `RecursiveJsonSplitter` 객체 생성 시 2가지 설정이 가능합니다.
