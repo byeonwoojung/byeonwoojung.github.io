@@ -52,13 +52,13 @@ categories: LLM
 
    &nbsp;
 
-   ⭐️ **결국, runnable를 invoke 호출했을 때<br>`{'input': 'hi', 'chat_history': [대화들]}`이 되므로 각각 사용자 입력값과 이전 대화로 프롬프트 템플릿에서 이용할 수 있습니다!!**⭐️
+   ⭐️ <strong>결국,<br>runnable를 `invoke()` 호출했을 때<br>`{'input': 'hi', 'chat_history': [대화들]}`이 되므로
 
-   (좀 복잡하지만 그 과정을 명확히 알고 있어야 본격적으로 chain에 연결할 때 헷갈리지 않을 것 같습니다..)
+   각각 사용자 입력값과 이전 대화로 프롬프트 템플릿에서 이용할 수 있습니다!!</strong><br>(좀 복잡하지만 그 과정을 명확히 알고 있어야 본격적으로 chain에 연결할 때 헷갈리지 않을 것 같습니다..)
 
 &nbsp;
 
-방금 만들었던 **이전 대화와 새로운 질문을 반환하는 `runnable`**을 가장 맨 앞에 붙여<br>그 결과를 프롬프트에 전달하는 'runnable-프롬프트-LLM-파서' 이렇게 chain을 구성하면 될 듯 합니다.
+방금 만들었던 <strong>이전 대화와 새로운 질문을 반환하는 `runnable`</strong>을 가장 맨 앞에 붙여<br>그 결과를 프롬프트에 전달하는 'runnable-프롬프트-LLM-파서' 이렇게 chain을 구성하면 될 듯 합니다.
 
 &nbsp;
 
@@ -104,7 +104,7 @@ LLM 실행 → 응답 반환
 
 코드로 자세하게 봅시다.
 
-1. **`ConfigurableFieldSpec`**을 이용해 **DB 조회할 파라미터(컬럼명 등)를 설정**해두어야 합니다.
+1. <strong>`ConfigurableFieldSpec`</strong>을 이용해 **DB 조회할 파라미터(컬럼명 등)를 설정**해두어야 합니다.
 
    ```python
    from langchain_core.runnables.utils import ConfigurableFieldSpec

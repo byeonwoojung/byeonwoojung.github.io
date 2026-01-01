@@ -132,7 +132,7 @@ EmailSummary(person='김철수', email='chulsoo.kim@bikecorporation.me', subject
 
 하지만,
 
-⭐️ **LLM의 `.with_structured_output()` 메서드를 이용하면 애초에 LLM에게 구조화된 응답받을 수 있도록 할 수 있습니다.** ⭐️
+**LLM의 `.with_structured_output()` 메서드를 이용하면<br>애초에 LLM에게 구조화된 응답받을 수 있도록 할 수 있습니다.** ⭐️
 
 ```python
 llm_with_structered = ChatOpenAI(
@@ -146,11 +146,9 @@ EmailSummary(person='김철수', email='chulsoo.kim@bikecorporation.me', subject
 """
 ```
 
-이처럼
+이처럼 LLM을 `with_structured_output()` 메서드를 붙여 생성하고 `invoke()`를 호출하면
 
-LLM을 `with_structured_output()` 메서드를 붙여 생성하고 invoke() 메서드를 호출하면
-
-**LLM 응답 형식 `AIMessage`가 아닌,<br>여기서 Pydantic 객체인 EmailSummary 객체로 응답이 나오는 것을 볼 수 있습니다.**
+**LLM 응답 형식 `AIMessage`가 아닌<br>여기서 Pydantic 객체인 EmailSummary 객체로 응답이 나오는 것을 볼 수 있습니다.**
 
 &nbsp;
 

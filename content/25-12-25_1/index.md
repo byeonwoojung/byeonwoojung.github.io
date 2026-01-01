@@ -35,15 +35,14 @@ LangChain을 사용하여 로컬 LLM을 구동할 때, 특히 Apple Silicon(M1/M
    - **역할:** 모델 다운로드, 토크나이저 로드, 입력 텍스트 전처리(Pre-processing), 모델 추론(Model Inference), 결과 후처리(Post-processing)의 전 과정을 수행합니다.
    - **Device 처리 특징:**
 
-     - ⭐️ **`device` 인자로 문자열(`"cpu"`, `"cuda"`, `"mps"`)과 정수(GPU ID)를 모두 지원합니다.** ⭐️
+     - ⭐️ **`device` 인자로 문자열(`"cpu"`, `"cuda"`, `"mps"`)과 정수(GPU ID)를 모두 지원합니다.**
 2. `HuggingFacePipeline.from_model_id`
-
    - **소속 라이브러리:** `langchain_huggingface`
    - **정체:** LangChain에서 `HuggingFacePipeline` 객체를 쉽게 생성하기 위해 제공하는 **팩토리 메서드(Factory Method)이자 래퍼(Wrapper)**입니다.
    - **역할:** 내부적으로 `transformers.pipeline`을 호출하여 파이프라인을 생성하고, 이를 LangChain 객체로 감쌉니다.
    - **Device 처리 특징:**
-
-     - 사용자의 편의를 위해 `device` 파라미터를 주로 정수형(Integer)으로 입력받도록 설계되었습니다. (예: `-1`은 CPU, ⭐️ **`0`은 첫 번째 CUDA GPU** ⭐️)
+   
+     - 사용자의 편의를 위해 **`device`** 파라미터를 주로 정수형(Integer)으로 입력받도록 설계되었습니다. (예: -1은 CPU, ⭐️ **0은 첫 번째 CUDA GPU** ⭐️)
      - 이 과정에서 **유효성 검사 로직(Validation Logic)**이 포함되는데, 이 로직이 NVIDIA GPU(CUDA)를 기준으로 작성되어 있어 Mac(MPS) 환경과 호환성 충돌을 일으킬 수 있습니다.
 
 &nbsp;

@@ -362,12 +362,12 @@ OK.
 
 > **Q. 이러한 대화목록을 프롬프트에 설정하면 어떤 장점이 있는 것인가?**
 >
-> => LLM이 해당 메시지가 어떤 role인지 명확하게 알 수 있습니다. 다른 프롬프트 템플릿을 사용해도 알 수는 있지만, 이 템플릿은 명확하게 알려줄 수 있습니다. (시스템 프롬프트도 명확하게 인지 가능!!)
+> => **LLM이 해당 메시지가 어떤 role인지 명확하게 알 수 있습니다.** 다른 프롬프트 템플릿을 사용해도 알 수는 있지만, 이 템플릿은 명확하게 알려줄 수 있습니다. (시스템 프롬프트도 명확하게 인지 가능!!)
 >
 > 그리고, 나중에 ⭐️ **"대화 기록 요약"** ⭐️에서 활용 가능!!!!
->
-> 여기서
->
+
+&nbsp;
+
 > ### 💡 깨알 Tip
 >
 > **MessagesPlaceholder()를 이용하여 아직 채워지지 않은 대화목록을 프롬프트에 고정시킬 수 있습니다.**
@@ -375,69 +375,69 @@ OK.
 > **즉, 미리 자리 차지해놓고 대화하다가 그 대화를 끼워넣을 수 있는 것임!!** OK?!
 >
 > ```python
-> from langchain_core.output_parsers import StrOutputParser
+>from langchain_core.output_parsers import StrOutputParser
 > from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-> 
+>
 > chat_prompt = ChatPromptTemplate.from_messages(
->     [
->         (
->             "system",
->             "당신은 요약 전문 AI 어시스턴트입니다. 당신의 임무는 주요 키워드로 대화를 요약하는 것입니다.",
->         ),
->         # 아직 확정되지 않은 대화를 고정할 수 있습니다.
->         # variable_name로 키 값 설정함
->         MessagesPlaceholder(variable_name="conversation"),
+> [
+>      (
+>         "system",
+>          "당신은 요약 전문 AI 어시스턴트입니다. 당신의 임무는 주요 키워드로 대화를 요약하는 것입니다.",
+>      ),
+>      # 아직 확정되지 않은 대화를 고정할 수 있습니다.
+>      # variable_name로 키 값 설정함
+>      MessagesPlaceholder(variable_name="conversation"),
 >         ("human", "지금까지의 대화를 {word_count} 단어로 요약합니다."),
 >     ]
-> )
-> chat_prompt
-> ```
->
-> **`variable_name`로 아직 정해지지 않은 대화목록(메시지 리스트)의 키 값을 설정할 수 있습니다.**
->
-> **format() 메서드로 한번 어떻게 채워지는지 확인해봅시다.**
->
+>    )
+>    chat_prompt
+>    ```
+>    
+>    **`variable_name`로 아직 정해지지 않은 대화목록(메시지 리스트)의 키 값을 설정할 수 있습니다.**
+>    
+>    **format() 메서드로 한번 어떻게 채워지는지 확인해봅시다.**
+>    
 > ```python
 > formatted_chat_prompt = chat_prompt.format(
->     word_count=5,
->     conversation=[
->         ("human", "안녕하세요! 저는 오늘 새로 입사한 테디 입니다. 만나서 반갑습니다."),
->         ("ai", "반가워요! 앞으로 잘 부탁 드립니다."),
->     ],
-> )
+>  word_count=5,
+> conversation=[
+>      ("human", "안녕하세요! 저는 오늘 새로 입사한 테디 입니다. 만나서 반갑습니다."),
+>     ("ai", "반가워요! 앞으로 잘 부탁 드립니다."),
+>  ],
+>)
 > 
 > print(formatted_chat_prompt)
-> """출력:
-> System: 당신은 요약 전문 AI 어시스턴트입니다. 당신의 임무는 주요 키워드로 대화를 요약하는 것입니다.
-> Human: 안녕하세요! 저는 오늘 새로 입사한 테디 입니다. 만나서 반갑습니다.
-> AI: 반가워요! 앞으로 잘 부탁 드립니다.
-> Human: 지금까지의 대화를 5 단어로 요약합니다.
+>    """출력:
+>    System: 당신은 요약 전문 AI 어시스턴트입니다. 당신의 임무는 주요 키워드로 대화를 요약하는 것입니다.
+>    Human: 안녕하세요! 저는 오늘 새로 입사한 테디 입니다. 만나서 반갑습니다.
+>    AI: 반가워요! 앞으로 잘 부탁 드립니다.
+>    Human: 지금까지의 대화를 5 단어로 요약합니다.
 > """
 > ```
->
+> 
 > 다시 chat_prompt을 가지고, chain을 만들고 아래처럼 invoke() 호출하면<br>**위의 format으로 확인했던 프롬프트가 LLM에게 보내어 응답결과를 받아오게 되는 것입니다.**
->
+> 
 > ```python
 > chain = chat_prompt | llm | StrOutputParser()
 > 
 > chain.invoke(
->     {
->         "word_count": 5,
->         "conversation": [
->             (
->                 "human",
->                 "안녕하세요! 저는 오늘 새로 입사한 테디 입니다. 만나서 반갑습니다.",
->             ),
->             ("ai", "반가워요! 앞으로 잘 부탁 드립니다."),
+>  {
+>     "word_count": 5,
+>      "conversation": [
+>         (
+>              "human",
+>              "안녕하세요! 저는 오늘 새로 입사한 테디 입니다. 만나서 반갑습니다.",
+>          ),
+>          ("ai", "반가워요! 앞으로 잘 부탁 드립니다."),
 >         ],
 >     }
-> )
-> # 출력: '새로운 입사, 반가운 만남.'
-> ```
->
-> LangSmith에서 보면,<br>아래처럼 `MessagesPlaceholder()` 부분에 프롬프트가 끼워 들어간 것을 확인할 수 있습니다.
->
-> <img src="img_1.png" style="zoom:30%;" />
+>    )
+>    # 출력: '새로운 입사, 반가운 만남.'
+>    ```
+>    
+>    LangSmith에서 보면,<br>아래처럼 `MessagesPlaceholder()` 부분에 프롬프트가 끼워 들어간 것을 확인할 수 있습니다.
+>    
+>    <img src="img_1.png" style="zoom:30%;" />
 
 &nbsp;
 
@@ -461,7 +461,7 @@ OK.
 | 학습 곡선            | **낮음**                    | 상대적으로 높음                       |
 | 자유도               | **높음**                    | 구조 제약 있음                        |
 
-이정도로 정리할 수 있다고 우리의 GPT 박사님이 알려줬습니다.
+혹시 궁금하실 분들(저요,,)을 위해 GPT 박사를 이용하여 정리했습니다.
 
 &nbsp;
 

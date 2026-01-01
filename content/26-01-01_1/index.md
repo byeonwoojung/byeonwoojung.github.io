@@ -94,24 +94,25 @@ categories: LLM RAG
 
 RAG에서 텍스트를 청킹하는 것은 중요합니다. 아. 청킹은 문서 내용을 chunk(뭉치?) 단위로 묶는 것이라 생각하면 됩니다.
 
+&nbsp;
+
 ### 1. 청킹을 하는 이유
 
-- **답변 품질·정확성 향상**
-   문서를 적절한 길이로 나누면 질문과의 **유사도 계산이 정확해짐**.
-   청크가 너무 길면 핵심 정보가 희석돼 유사도가 낮게 나올 수 있음.
-- **효율성 향상**
+- **답변 품질·정확성 향상**<br>
+   문서를 적절한 길이로 나누면 질문과의 **유사도 계산이 정확해집니다.**<br>(청크가 너무 길면 핵심 정보가 희석돼 유사도가 낮게 나올 수 있음)
+- **효율성 향상**<br>
    모델의 **최대 토큰 제한**을 넘지 않게 하고,
-   **비용 절감 + 불필요한 문맥 감소로 할루시네이션 위험 완화**.
+   **비용 절감 + 불필요한 문맥 감소로 할루시네이션 위험 완화** 가능합니다.
 
-문서 내용이 길다면 청킹은 반드시 필수겠죠.
-
-가장 유명한 청킹 방식은 Recursive Character 기반 Chunking, Sentence 기반 Chunking, Semantic Chunking 등이 있습니다.
+문서 내용이 길다면 청킹은 반드시 필수겠죠.<br>가장 유명한 청킹 방식은 Recursive Character, Sentence, Semantic Chunking 등이 있습니다.
 
 우선 Recursive Character 기반 chunking을 손쉽게 눈으로 확인할 수 있는 사이트를 가져와봤습니다.
 
 [chunkviz](https://chunkviz.up.railway.app/)
 
 <img src="img_1.png" style="zoom:30%;" />
+
+&nbsp;
 
 청크 사이즈와 청크 오버랩(청크 간 겹치는 글자수)을 설정하여<br>화면에서 바로 확인해볼 수 있는 사이트입니다.
 
@@ -129,7 +130,7 @@ RAG에서 텍스트를 청킹하는 것은 중요합니다. 아. 청킹은 문�
 
 **Text Splitter는 말 그대로 텍스트를 분할하는 방식**입니다. 문서나 텍스트가 들어왔을 때, Text Splitter의 방식대로 이들을 분할합니다.
 
-Tokenizer는 토큰을 분할하는 방식입니다.
+**Tokenizer는 토큰을 분할하는 방식**입니다.
 
 **엥 그래서 둘의 차이는 뭐냐?**
 
@@ -144,9 +145,12 @@ Tokenizer는 토큰을 분할하는 방식입니다.
 >
 > OK!!! 이해 완.
 >
-> 결국,
->
-> ⭐️ **분할**과 **토큰 계산 방식** 2가지만 기억하고 있으면 됩니다. ⭐️<br>(당연히 **Text splitter만으로 분할하고 청크 사이즈 계산할 수도 있습니다**!!!)
+
+&nbsp;
+
+결국,
+
+**분할**과 **토큰 계산 방식** 2가지만 기억하고 있으면 됩니다. ⭐️<br>(당연히 **Text splitter만으로 분할하고 청크 사이즈 계산할 수도 있습니다**!!!)
 
 &nbsp;
 
@@ -173,7 +177,7 @@ Tokenizer는 토큰을 분할하는 방식입니다.
 가장 범용적으로 사용되는 방식입니다. 단순히 문자를 자르는 것이 아니라, 텍스트의 구조를 유지하며 재귀적으로 분할을 시도합니다.
 
 - **동작 원리 (Algorithm):**
-  - **사용자가 지정한 구분자 리스트(기본값: `["\n\n", "\n", " ", ""]`)**의 순서대로 분할을 시도합니다.
+  - <strong>사용자가 지정한 구분자 리스트(기본값: `["\n\n", "\n", " ", ""]`)</strong>의 순서대로 분할을 시도합니다.
   - **재귀적 접근:** 가장 큰 단위(`\n\n`: 문단)로 먼저 잘라보고, 청크 크기(Chunk Size)를 초과하면 그 다음 단위(`\n`: 줄바꿈)로 내려가고, 그래도 크면 단어(` `), 문자 순으로 쪼갭니다.
   - **특이 사항 (Edge Case):** 일반적으로 설정한 `chunk_size`를 준수하지만, **절대적인 강제 사항은 아닙니다.** 예를 들어, 구분자가 없는 매우 긴 문자열(예: 긴 URL, 띄어쓰기 없는 텍스트)이 들어오면 설정된 크기를 초과하더라도 자르지 않고 하나의 청크로 유지하는 경우가 발생할 수 있습니다.
 - **장점:** 문단이나 문장의 경계를 최대한 보존하므로 문맥(Context)이 잘리지 않고 유지될 확률이 높습니다. 구조가 불명확한 텍스트에도 비교적 안정적입니다.
@@ -228,13 +232,13 @@ Tokenizer는 토큰을 분할하는 방식입니다.
 
 LLM은 텍스트를 문자가 아닌 **토큰(Token)** 단위로 처리합니다. 따라서 LLM의 Context Window(입력 제한)를 효율적으로 관리하기 위해서는 토큰 기준 분할이 필수적입니다.
 
-- ⭐️ **동작 방식:**
+- **동작 방식:** ⭐️
 
   1. 입력된 텍스트를 지정된 Tokenizer를 사용해 토큰(정수 ID)으로 변환합니다.
   2. 설정된 `chunk_size` (토큰 개수) 만큼 자릅니다.
   3. 잘린 토큰들을 다시 텍스트로 디코딩합니다.
 
-- ⭐️ **역할 구분:** 분할을 수행하는 주체는 `TextSplitter` 객체이며, 내부의 `Tokenizer`는 오직 **"길이 계산(Counting)"**과 **"인코딩/디코딩"** 역할만 수행합니다.
+- **역할 구분:** 분할을 수행하는 주체는 `TextSplitter` 객체이며, 내부의 `Tokenizer`는 오직 **길이 계산(Counting\)**과 **인코딩/디코딩** 역할만 수행합니다. ⭐️
 
 - **주의사항:** 토큰 단위로 강제로 자르기 때문에, 단어 중간이나 문장 중간에서 끊길 수 있어 `RecursiveCharacterTextSplitter.from_tiktoken_encoder`와 같이 **구조적 분할과 토큰 계산을 결합**하여 사용하는 것이 일반적입니다.
 
@@ -263,7 +267,7 @@ LLM은 텍스트를 문자가 아닌 **토큰(Token)** 단위로 처리합니다
 
 #### tiktoken (OpenAI 계열)
 
-OpenAI 모델을 사용한다면 사실상 **표준(Standard)**입니다.
+OpenAI 모델을 사용한다면 사실상 <strong>표준(Standard)</strong>입니다.
 
 - **연결 방식:** `from_tiktoken_encoder()` 메서드를 통해 `RecursiveCharacterTextSplitter` 등과 결합하여 사용합니다.
 
@@ -299,27 +303,27 @@ OpenAI 모델을 사용한다면 사실상 **표준(Standard)**입니다.
 
 Llama, Mistral 등 오픈소스 모델을 로컬이나 별도 서버에 호스팅 할 때 필수적입니다.
 
-- ⭐️ **연결 방식:** `from_huggingface_tokenizer()` 메서드에 `AutoTokenizer` 객체 등을 넘겨서 사용합니다.
-- **대표 클래스:** `GPT2TokenizerFast`, `LlamaTokenizer`, `LlamaTokenizerFast`, `AutoTokenizer` emd
+- **연결 방식:** **`from_huggingface_tokenizer()` 메서드에 `AutoTokenizer` 객체 등을 넘겨서 사용합니다.**
+- **대표 클래스:** `GPT2TokenizerFast`, `LlamaTokenizer`, `LlamaTokenizerFast`, `AutoTokenizer` 등
 - **대상 모델:** LLaMA 2/3, Mistral, Qwen, Gemma, Solar 등 대부분의 오픈소스 LLM
 - **핵심 특징:**
-  - ⭐️ **Fast Tokenizer:** 대부분 Rust 기반으로 작성된 'Fast' 버전을 지원하여 속도가 매우 빠릅니다.
+  - **Fast Tokenizer:** 대부분 Rust 기반으로 작성된 'Fast' 버전을 지원하여 속도가 매우 빠릅니다. ⭐️
   - **유연성:** BPE, SentencePiece, Unigram 등 다양한 토큰화 알고리즘을 모델에 맞춰 자동으로 적용합니다(`AutoTokenizer` 사용 시).
-- ⭐️ **주의 :** 모델마다 사용하는 어휘 사전(Vocab)이 다르므로, 반드시 **사용하려는 LLM 모델과 동일한 토크나이저**를 로드해야 정확한 토큰 수를 맞출 수 있습니다.
+- **주의 :** 모델마다 사용하는 어휘 사전(Vocab)이 다르므로, 반드시 **사용하려는 LLM 모델과 동일한 토크나이저**를 로드해야 정확한 토큰 수를 맞출 수 있습니다. ⭐️
 
 &nbsp;
 
 #### Sentence Transformer (임베딩 특화)
 
 - **연결 방식:** `SentenceTransformersTokenTextSplitter`
-- **특징:** LLM의 입력 제한보다는, **임베딩 모델(Embedding Model)의 입력 한계(Max Sequence Length)**를 맞추기 위해 사용합니다. (예: BERT 계열은 보통 512 토큰 제한)
+- **특징:** LLM의 입력 제한보다는, <strong>임베딩 모델(Embedding Model)의 입력 한계(Max Sequence Length)</strong>를 맞추기 위해 사용합니다. (예: BERT 계열은 보통 512 토큰 제한)
 - **주의:** 생성용 LLM(예: GPT-4)과 토크나이저가 다르므로, 여기서 계산한 토큰 수가 LLM 입력 토큰 수와 일치하지 않습니다. 주로 **Semantic Chunking**이나 임베딩 벡터 생성 전처리 단계에서 사용됩니다.
 
 &nbsp;
 
 #### 언어학적/규칙 기반 토크나이저 (Linguistic/Rule-based)
 
-토큰 개수보다는 **"문장의 의미적 완결성"**을 중시할 때 사용합니다.
+토큰 개수보다는 **문장의 의미적 완결성**을 중시할 때 사용합니다.
 
 (코드는 이전과 비슷한 방식으로 진행하면 됩니다.)
 
@@ -332,8 +336,8 @@ Llama, Mistral 등 오픈소스 모델을 로컬이나 별도 서버에 호스�
 - **KoNLPy (`KonlpyTextSplitter`)**
   - **특징:** 한국어의 특성(교착어)을 반영하여 형태소 단위로 분석합니다. 한국어의 의미적 단위를 보존하는 데 유리합니다.
   - **주의 (Trade-off):**
-    1. **속도:** Tiktoken이나 HuggingFace Fast Tokenizer에 비해 분석 속도가 현저히 느립니다.
-    2. **불일치:** 형태소 개수와 LLM의 토큰 개수는 다릅니다. 따라서 이를 기준으로 자른 뒤, LLM에 넣을 때는 토큰 초과 여부를 다시 확인해야 할 수도 있습니다.
+    * **속도:** Tiktoken이나 HuggingFace Fast Tokenizer에 비해 분석 속도가 현저히 느립니다.
+    * **불일치:** 형태소 개수와 LLM의 토큰 개수는 다릅니다. 따라서 이를 기준으로 자른 뒤, LLM에 넣을 때는 토큰 초과 여부를 다시 확인해야 할 수도 있습니다.
 
 &nbsp;
 
@@ -343,9 +347,9 @@ Llama, Mistral 등 오픈소스 모델을 로컬이나 별도 서버에 호스�
 
 ---
 
-`Semantic Chunking` 방법은 별도로 정리하고자 합니다.
+**`Semantic Chunking`** 방법은 별도로 정리하고자 합니다.
 
-**`Semantic Chunking`은 앞 뒤 문장의 시맨틱 거리(Semantic Distance)를 계산하여 특정 임계치(`breakpoint_threshold_type`, `breakpoint_threshold_amount`)를 넘지 않을 때까지 한 청크로 묶는 방법입니다.**
+**`Semantic Chunking`은 앞뒤 문장의 시맨틱 거리(Semantic Distance)를 계산하여 특정 임계치(`breakpoint_threshold_type`, `breakpoint_threshold_amount`)를 넘지 않을 때까지 한 청크로 묶는 방법입니다.**
 
 즉, **연속된 유사한 문장들을 묶어주는 방법**이라고 할 수 있습니다.
 
@@ -375,14 +379,14 @@ print(docs[0].page_content)
     * 현재 문장의 이전 문장과의 시맨틱 거리가 백분위수를 넘지 않는 곳까지 청크를 나눕니다.
   * `standard_deviation`: 표준편차
   * `interquartile`: 사분위수 범위(IQR)
-    * $$임계값(Threshold) = \text{Mean(평균)} + (\text{amount} \times \text{IQR})$$<br>값이 `breakpoint_threshold_amount`을 넘지 않는 곳까지 청크를 나눕니다.
+    * $$임계값(Threshold) = \text{Mean(평균)} + (\text{amount} \times \text{IQR})$$ 값이 `breakpoint_threshold_amount`을 넘지 않는 곳까지 청크를 나눕니다.
     * 평균과 IQR은 현재 문장의 이전 문장간의 시맨틱 거리를 구한 값들에서 구합니다.
   * `gradient`: 기울기(그래디언트)
 
 * **`breakpoint_threshold_amount`: 그 기준의 임계치 ⭐️**
 
-  * **임계치가 높을수록, 시맨틱 거리가 먼 것(의미적 유사성이 덜한 것)도 한 청크로 묶이므로 청크 개수가 적어진다.** ⭐️
-  * **임계치가 낮을수록, 시맨틱 거리가 짧은 것(의미적 유사성이 깊은 것)들끼리 청크로 묶이므로 청크 개수가 많아진다.** ⭐️
+  * **임계치가 높을수록<br>시맨틱 거리가 먼 것(의미적 유사성이 덜한 것)도 한 청크로 묶이므로 청크 개수가 적어진다.** ⭐️
+  * **임계치가 낮을수록<br>시맨틱 거리가 짧은 것(의미적 유사성이 깊은 것)들끼리 청크로 묶이므로 청크 개수가 많아진다.** ⭐️
 
 * 아래는 `percentile` 기준에서 `breakpoint_threshold_amount`에 대한 이해를 높이기 위한 그림입니다.<br>(임계치는 `percentile` 값이 95인 곳입니다.)
 
@@ -393,7 +397,7 @@ print(docs[0].page_content)
   * `x`축은 에세이의 첫 문장부터 마지막 문장까지 순서대로 나열한 것입니다.
   * `y`축은 **현재 문장의 바로 이전 문장과의 시맨틱 거리**(코사인 거리)입니다.<br>(**거리가 높다는 것은 의미적 유사도가 낮다**(즉, 주제가 급격히 바뀌었다)는 뜻입니다.)
   * **빨간 줄(임계치)를 위로 넘는 부분에서 시맨틱 거리의 백분위수 95를 넘는 곳**입니다. 그림에서 확인할 수 있듯이, **빨간 줄 위로 넘는 부분들에 대해 그 이전 백분위수 95를 넘는 곳에서 해당 부분까지 Chunk가 형성되는 것**입니다.
-  * 결국, **순서대로 나열된 문장들이 이전 문장과의 시맨틱 거리(코사인 거리)의 `percentile`이 95가 넘을 때 Chunk를 끊는 형태**입니다.
+  * 결국, **순서대로 나열된 문장들이 이전 문장과의 시맨틱 거리(코사인 거리)의 `percentile`이 95가 넘을 때 Chunk를 끊는 형태**입니다. ⭐️
   * 당연히 **청크별 길이가 크게 차이가 날 수 있습니다.**
 
 &nbsp;
@@ -506,7 +510,7 @@ JSON 분할기 `RecursiveJsonSplitter`은 데이터를 자를 때 **JSON의 문�
 **재귀적 분할 (Recursive) 방식**으로 JSON을 분할합니다.
 
 1. 전체 JSON 객체를 봅니다.
-2. 설정된 크기(`max_chunk_size`)보다 크면, 내부의 **키(Key)**나 **리스트(List)의 요소** 단위로 더 깊이 들어가서 쪼갭니다. (깊이우선탐색 DFS 알고리즘과 같은 방식입니다.)
+2. 설정된 크기(`max_chunk_size`)보다 크면, 내부의 <strong>키(Key)</strong>나 **리스트(List)의 요소** 단위로 더 깊이 들어가서 쪼갭니다. (깊이우선탐색 DFS 알고리즘과 같은 방식입니다.)
 3. 이 과정을 반복하여 각 조각이 제한 크기 안에 들어오도록 만듭니다.
 
 &nbsp;
