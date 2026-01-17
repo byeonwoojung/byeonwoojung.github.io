@@ -445,6 +445,16 @@ runnable.invoke({"num": 1})
 
 &nbsp;
 
+> ### 참고 ‼️
+>
+> 다음의 3가지는 같은 방식으로 작동됩니다.
+>
+> 1. `{"context": retriever, "question": RunnablePassthrough()}`<br>(`RunnableParallel`로 자동 래핑됨)
+> 2. `RunnableParallel({"context": retriever, "question": RunnablePassthrough()})`
+> 3. `RunnableParallel(context=retriever, question=RunnablePassthrough())`
+
+&nbsp;
+
 ### 3. 사용자 정의 함수 매핑: RunnableLambda
 
 함수를 호출한 후에 프롬프트에 넣고 싶을 때 사용합니다. RunnableLambda(사용자 정의 함수)로 이용하면 됩니다.
