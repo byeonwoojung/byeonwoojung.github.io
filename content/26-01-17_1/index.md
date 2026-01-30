@@ -96,13 +96,34 @@ DB에서 특정 값을 조회하기 위한 SQL 쿼리를 생성하고, 쿼리를
 
 ---
 
-1. retriever를 그냥 호출하게 되면 page_content만 반환하므로 프롬프트 템플릿에 넣어야 한다.
+1. retriever를 그냥 호출하게 되면 page_content만 반환하므로, LLM에게 줄 추가적인 메타데이터는 프롬프트 템플릿을 통해 넣어야 한다.
 
+2. LangGraph에서 Reducer(add_messages, operator.add): 자동으로 리스트에 메시지를 추가해주는 기능
 
+3. TypedDict: dict에 타입힌팅 추가한 개념
 
+4. LangGraph 기본 개념
 
+   * 상태(State): 노드와 노드 간에 정보를 전달할 때 상태(State) 객체에 담아 전달함
 
+   * 새로운 노드에서 값을 덮어쓰기 방식으로 채움
 
+   * GraphState 클래스를 TypedDict 클래스를 상속받아 보통 정의함
+
+     ```python
+     from typing import Annotated, TypedDict
+     from langgraph.graph.message import add_messages
+     
+     class GraphState(TypedDict):
+         question: Annotated(list, add_messages)  # 질문
+         context: Annotated(str, "Context")  # 문서의 검색 결과
+         answer:  Annotated(str, "Answer")  # 답변
+         messages: Annotated(list, add_messages)  # 메시지
+         relevance: Annotated(str, "relevance")  # 관련성
+     ```
+
+     * `question`, `messages`는 `Annotated(list, add_messages)`를 통해 리스트에 메시지를 계속 추가함
+     * 다른 것들은 덮어쓰기로 상태를 저장함
 
 
 
