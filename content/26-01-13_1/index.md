@@ -3,7 +3,7 @@ emoji: ☀️
 title: "[LLM] 테디노트의 RAG 비법노트 끄적끄적-13"
 date: '2026-01-13 00:00:00'
 author: 변우중
-tags: LLM 프롬프트 RAG LangChain 랭체인 Retriver 리트리버 Reranker 리랭커 Vectorstore 벡터스토어
+tags: LLM 프롬프트 RAG LangChain 랭체인 Retriver 리트리버 Vectorstore 벡터스토어
 categories: LLM RAG
 ---
 
@@ -15,7 +15,7 @@ categories: LLM RAG
 
 레츠기릿
 
-
+&nbsp;
 
 ## @chain 데코레이터
 
