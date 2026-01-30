@@ -145,15 +145,14 @@
 </ol>
 </blockquote>
 <p> </p>
-<p>그래서</p>
+<p>그래서 우리가 나아가야 할 방향은<br>아래와 같았습니다.</p>
 <ol>
-<li>불명확한 지칭 표현을 해결하고</li>
-<li>시간의 흐름을 그대로 살리면서</li>
-<li>문맥을 살릴 수 있는 방법을 적용해야 했습니다.</li>
+<li><strong>불명확한 지칭 표현을 해결하고</strong></li>
+<li><strong>시간의 흐름을 그대로 살리면서</strong></li>
+<li><strong>문맥을 살릴 수 있는 방법을 적용</strong> !!!</li>
 </ol>
-<p>그것이</p>
-<p>Anthropic에서 2024년도에 발표한</p>
-<h4 id="contextual-retrieval을-적용해보았습니다" style="position:relative;"><a href="#contextual-retrieval%EC%9D%84-%EC%A0%81%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4" aria-label="contextual retrieval을 적용해보았습니다 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>“Contextual Retrieval”을 적용해보았습니다.</h4>
+<p>이에… Anthropic에서 2024년도에 발표한</p>
+<p>⭐️ <strong>“Contextual Retrieval”을 적용해보았습니다.</strong> ⭐️</p>
 <p> </p>
 <p>이를 적용한 방법을 바로 얘기해보자면</p>
 <blockquote>
@@ -165,7 +164,7 @@
 <p><strong>청킹 방법은 자막의 시간대 한 구간을 묶어서</strong> 하도록 했고,<br><strong>오버랩은 자막 문맥에 들어가지 않도록 metadata에 따로</strong> 넣어두었습니다.</p>
 <p>(필요할 때 프롬프트 템플릿에 따로 꺼내어 쓰고자 합니다.)</p>
 <p> </p>
-<h4 id="️-문맥이-추가된-자막-한-청크-️" style="position:relative;"><a href="#%EF%B8%8F-%EB%AC%B8%EB%A7%A5%EC%9D%B4-%EC%B6%94%EA%B0%80%EB%90%9C-%EC%9E%90%EB%A7%89-%ED%95%9C-%EC%B2%AD%ED%81%AC-%EF%B8%8F" aria-label="️ 문맥이 추가된 자막 한 청크 ️ permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>‼️ 문맥이 추가된 자막 한 청크 ‼️</strong></h4>
+<p><strong>‼️ 문맥이 추가된 자막 한 청크 ‼️</strong></p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">문맥: 쯔양이 '굽네치킨'의 신메뉴인 맵단짠칩킨을 시식하는 장면입니다.
 그녀는 치킨의 맛이 약간 매콤하면서도 단맛과 짭짤함이 조화를 이루어
 중독성이 강하다고 평가합니다. 특히, 요블링소스에 치킨을 찍어 먹는 방법을
@@ -190,7 +189,7 @@
 <li>‘문맥’ 아래에 있는 자막에서는 “진짜 감칠맛이 어마어마한 그런 맛”의 <strong>대상이 불명확</strong>했지만<br><strong>전체 자막 맥락을 통해 현재 맵단짠칩킨을 시식하고 있었음을 맥락적으로 확인</strong>하여 서술해주고 있습니다.</li>
 </ul>
 <p> </p>
-<h4 id="️-모델은-오픈소스-소형-모델-️" style="position:relative;"><a href="#%EF%B8%8F-%EB%AA%A8%EB%8D%B8%EC%9D%80-%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%86%8C%ED%98%95-%EB%AA%A8%EB%8D%B8-%EF%B8%8F" aria-label="️ 모델은 오픈소스 소형 모델 ️ permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>‼️ 모델은 오픈소스 소형 모델 ‼️</strong></h4>
+<p><strong>‼️ 모델은 오픈소스 소형 모델 ‼️</strong></p>
 <p>자막 텍스트 길이가 너무 길다 보니 <strong>비용 문제</strong>를 신경쓰지 않을 수가 없었습니다.</p>
 <p>한국어를 잘한다는 모델 다양하게 이용해보았습니다.<br>(a.x-4.0-light-imatrix:Q8_0, exaone3.5:7.8b, qwen3:8b, EEVE-Korean-Instruct-10.8B, solar:10.7b-instruct-v1-q5_0 등)</p>
 <p>그 중에 SK텔레콤의 <strong>a.x-4.0-light-imatrix:Q8_0</strong> 모델이 현 데이터에 가장 적합한 모델이었습니다. 👍🏻</p>
@@ -317,11 +316,6 @@
 </li>
 <li>
 <p><a href="#phase-3-contextual-retrieval-anthropic%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%9E%90-%EF%B8%8F">Phase 3. Contextual Retrieval (Anthropic)을 이용하자. ‼️</a></p>
-<ul>
-<li><a href="#contextual-retrieval%EC%9D%84-%EC%A0%81%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%95%98%EC%8A%B5%EB%8B%88%EB%8B%A4">“Contextual Retrieval”을 적용해보았습니다.</a></li>
-<li><a href="#%EF%B8%8F-%EB%AC%B8%EB%A7%A5%EC%9D%B4-%EC%B6%94%EA%B0%80%EB%90%9C-%EC%9E%90%EB%A7%89-%ED%95%9C-%EC%B2%AD%ED%81%AC-%EF%B8%8F"><strong>‼️ 문맥이 추가된 자막 한 청크 ‼️</strong></a></li>
-<li><a href="#%EF%B8%8F-%EB%AA%A8%EB%8D%B8%EC%9D%80-%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%86%8C%ED%98%95-%EB%AA%A8%EB%8D%B8-%EF%B8%8F"><strong>‼️ 모델은 오픈소스 소형 모델 ‼️</strong></a></li>
-</ul>
 </li>
 </ul>
 </li>
